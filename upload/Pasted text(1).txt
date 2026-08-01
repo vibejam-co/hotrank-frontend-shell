@@ -1,0 +1,627 @@
+HotRank UI/UX — Granular Visual Description
+The current interface is a dark, cinematic ranking application rather than a traditional marketing website. It feels closer to a premium editorial dashboard, creative culture magazine, and leaderboard combined.
+The primary visual system is defined in [`src/index.css`](/Users/Ira/Desktop/HOTRANK/src/index.css):
+Near-black background: #050505
+Charcoal panels and cards
+White typography for hierarchy
+Muted zinc-gray supporting text
+Purple-to-pink gradients for brand energy
+Emerald for rising/positive signals
+Yellow for pending/editorial review
+Amber for monetizable prompt content
+Playfair Display italic serif for editorial headlines
+Inter for interface text
+JetBrains Mono for technical/ranking metadata
+The whole application is viewport-contained: the browser window uses a full-height layout with internal scrolling instead of a conventional long page. This is controlled in [`src/App.tsx`](/Users/Ira/Desktop/HOTRANK/src/App.tsx) with h-screen, overflow-hidden, and scrollable page panels.
+Global shell
+Every page sits inside the same top-level shell.
+Header
+The navigation bar is black, horizontally spaced, and separated from the content by a thin zinc border.
+On desktop it contains:
+Left: italic, bold HOTRANK AI wordmark
+Center-left: uppercase navigation links:Rankings
+Submit
+Creators
+Insights
+
+Right:Live Global Heat pill showing 98.4k
+Search icon
+Sign In button, or signed-in profile identity
+Logout icon when authenticated
+
+The brand mark is white for HOTRANK, while AI receives a purple-to-pink gradient treatment.
+The navigation is intentionally compact and editorial. It does not look like a consumer social app with large icon buttons; it looks more like a private cultural index or premium creative intelligence tool.
+Mobile header
+On smaller screens:
+The desktop navigation links disappear
+A search icon remains
+The sign-in action becomes part of the menu
+A hamburger icon opens a full-width dark dropdown panel beneath the header
+The menu has generous vertical spacing and uppercase tracking
+Signed-in users see their avatar/email and a Sign Out action inside the expanded menu
+The mobile menu is not a side drawer. It appears as a dark, full-width overlay directly below the header.
+1. Homepage / Rankings page
+Route: /
+Source: [`src/pages/Home.tsx`](/Users/Ira/Desktop/HOTRANK/src/pages/Home.tsx)
+The homepage is the strongest and most complete expression of the HotRank concept.
+It is not a typical hero-then-content landing page. It is structured as a two-column live ranking workspace.
+Homepage hero / upper view
+Overall composition
+On desktop, the content is centered in a max-width container and split approximately:
+Left: 55%
+Right: 45%
+The top of the content begins about 32 pixels below the header.
+There is no large marketing headline such as “Discover the future of AI video.” Instead, the first thing the visitor encounters is the ranked work itself.
+This makes the product feel active and editorial immediately.
+Left-side hero: rank-one spotlight
+The left column is the visual hero.
+It presents the highest-ranked approved video using [`SpotlightRankOne.tsx`](/Users/Ira/Desktop/HOTRANK/src/components/ranking/SpotlightRankOne.tsx).
+The visual treatment is designed to make rank one feel materially more important than every other submission:
+Large media area
+Prominent preview image or playable embed
+Strong contrast against the black background
+Oversized rank indicator
+Heat Score emphasis
+Creator attribution
+Engagement and trend context
+Save and interaction controls
+Editorial or ranking labels
+The spotlight is designed to answer immediately:
+What is currently number one?
+Who made it?
+Why is it hot?
+What is its score?
+Is it rising or falling?
+Can I save or open the work?
+The card feels like a featured magazine cover mixed with a sports leaderboard’s number-one position.
+Visual hierarchy inside the spotlight
+The visual order is approximately:
+Rank-one identity
+Media preview
+Work title
+Creator
+Heat score
+Supporting score metrics
+Why-it-ranks explanation
+Interaction controls
+The title uses the serif italic face, helping distinguish editorial content from interface metadata.
+The score system uses large, high-contrast numeric typography. Supporting data is deliberately smaller and uppercase, keeping the main emotional focus on the work itself rather than turning the page into a spreadsheet.
+Empty hero state
+If there are no approved rankings, the left side becomes a large rounded container with:
+Subtle zinc border
+Transparent charcoal background
+Centered italic serif text
+Message: No approved rankings yet
+This state is quiet rather than alarming. It preserves the premium tone instead of displaying an error-heavy admin message.
+Homepage middle view
+Right-side ranking ledger
+The right column is titled:
+The Rankings
+
+The heading uses white italic serif typography, creating an editorial contrast with the dense list below.
+At the top-right of the ranking column is the count of approved entries, displayed as small uppercase metadata.
+Pending Review block
+If pending submissions exist, they appear first in a dedicated section.
+The section is visually marked by:
+Yellow uppercase label: Pending Review
+Small animated yellow dot
+Compact ranking rows
+Yellow status treatment
+Different score/status styling from approved content
+This gives the page an internal editorial workflow layer without completely separating pending work from the public ranking surface.
+Official rankings block
+Below pending entries is the main feed:
+Purple status dot
+Label: Official Rankings by Heat Score V2
+Compact ranked rows
+Each row is structured horizontally:
+Large rank number on the left
+Thumbnail
+Title and creator
+Heat score
+Trend direction
+Save button
+Ignite/share/copy-style actions
+The rows use dark zinc surfaces rather than bright cards. Hovering creates a subtle contrast shift and makes the selected item feel interactive.
+Rank rows
+The ranking row component is compact and information-dense. It is designed to be scanned quickly.
+Each row communicates:
+Position
+Thumbnail
+Title
+Creator identity
+Heat score
+Movement state:Rising
+Falling
+Official
+Stable
+
+Save state
+Interaction affordances
+The rank number is intentionally oversized and muted at rest, becoming brighter on hover. This creates a strong visual rhythm down the list.
+The score is placed toward the right side and uses high-contrast white or status color. Supporting labels are tiny, uppercase, and widely tracked.
+This is a leaderboard first and a card grid second.
+Selected-content interaction
+Clicking a spotlight or ranking row opens the DetailReveal overlay.
+The interaction is modal rather than navigational, allowing the visitor to inspect a clip without losing their position in the ranking feed.
+The selected item is also synchronized with the URL query parameter when an unlock flow returns to the homepage.
+Homepage lower view
+The homepage does not have a conventional full-width lower section. Instead, the right ranking column continues into two compact lower elements.
+Ranking Source panel
+A small dark panel appears under the ranking list on desktop.
+It contains:
+Ranking Source
+Approved count
+Pending count
+This panel feels like an audit/readout strip. It reinforces that the rankings are data-backed rather than manually presented.
+Footer/readout strip
+The homepage footer is very small and technical.
+It includes:
+Number of Supabase submissions loaded
+Note that approved ranks use deterministic Heat Score V2
+Animated pink status dot
+Live from Supabase
+This is not a brand footer. It is a live system-status footer.
+The effect is closer to a broadcast control room or editorial intelligence dashboard than to a normal website footer.
+Mobile homepage behavior
+On mobile:
+The two-column layout collapses vertically
+The rank-one spotlight appears first
+The ranking list appears underneath
+The ranking section occupies a shorter viewport-height panel
+Horizontal density is reduced
+Some metadata is hidden
+Scrolling remains internal to the content areas
+The mobile experience preserves the hierarchy:
+Number one
+Rankings
+Supporting system status
+2. Detail reveal / selected clip experience
+This is technically an overlay rather than its own route, but it is a major part of the UX.
+Source: [`src/components/ranking/DetailReveal.tsx`](/Users/Ira/Desktop/HOTRANK/src/components/ranking/DetailReveal.tsx)
+Detail hero view
+When a clip is selected, the page darkens behind a nearly opaque black backdrop with heavy blur.
+The overlay is:
+Full viewport
+Deep black background
+Backdrop blur
+Large rounded container on desktop
+Two-column layout
+Close button in the upper-right corner
+The left side is the media stage.
+Media stage
+The left half contains:
+Blurred, enlarged thumbnail background
+Dark overlay treatment
+Centered video frame
+Rounded media window
+Large translucent play button
+Provider fallback message if inline playback is restricted
+The media area feels cinematic and immersive. It intentionally avoids showing the clip as a small feed thumbnail.
+A status pill appears in the upper-left:
+Purple for approved
+Yellow for pending
+Detail middle view
+The right side is a scrollable information panel.
+It begins with:
+Large serif italic title
+Creator avatar
+Creator name/handle
+Creator trend state
+Follow or identity-related action
+Then comes a large Heat Score block showing:
+Flame icon
+Main numerical score
+Four supporting metrics
+Ranking direction or editorial status
+“Why It Ranks”
+The overlay exposes ranking reasoning through compact pill tags.
+These may describe signals such as:
+Engagement
+Retention
+Velocity
+Freshness
+Category/style
+Editorial state
+This is an important UX choice because it makes the ranking feel explainable rather than arbitrary.
+Prompt/recipe section
+The prompt area is visually differentiated from normal ranking metadata.
+Possible states include:
+Free
+Locked
+Private
+Recipe
+Locked content receives:
+Amber border
+Amber glow
+Lock icon
+Premium language
+Unlock CTA
+Free or unlocked prompts use stacked panels for:
+AI stack
+Prompt text
+Workflow notes
+Creator recipe/context
+The prompt system makes the clip feel like the public entry point to a deeper creative package.
+Detail footer/actions
+The lower portion contains:
+Tags
+Ignite
+Save
+Copy link
+Share
+Admin approval/rejection controls for pending content
+The action bar is separated with a subtle border and pushed toward the bottom of the detail panel.
+3. Submit page
+Route: /submit
+Source: [`src/pages/Submit.tsx`](/Users/Ira/Desktop/HOTRANK/src/pages/Submit.tsx)
+The Submit page is a two-column creator workspace.
+Submit hero / upper view
+The left column begins with:
+Submit to HotRank
+
+Subheading:
+Premiere the film. Curate the prompt. Decide how much of the craft the audience earns.
+
+This is one of the clearest expressions of the product’s dual identity: the submission is both a public media object and a private creative process package.
+The header is followed by the active creator identity card:
+Creator avatar
+Email or creator identity
+Verification/check icon
+Creator Profile Active
+This reassures the user that attribution will be attached to the submission.
+Submit middle view
+Video URL entry
+The primary input is a large dark rounded field with:
+Link icon
+Placeholder for YouTube, X, TikTok, or Instagram
+Large text size
+Purple focus border
+Strong internal padding
+The interaction begins with a link, not a file upload. This makes the product feel like a curation platform rather than a storage platform.
+Preview state
+Once a valid URL is detected, a preview card expands below the input.
+It includes:
+Platform label
+Metadata status
+Video preview or thumbnail
+Embedded playback when available
+Graceful fallback when the provider blocks playback
+Parsed title
+Creator handle
+The preview has a wide cinematic media ratio and a dark media frame.
+Title editing
+The extracted title becomes editable. This gives the creator control over how the work appears in the ranking.
+The title field is followed by creator attribution text, reinforcing that the title and creator identity are separate data points.
+Prompt Capsule
+The main editorial/commerce component is the Prompt Capsule.
+It uses:
+A radial purple background treatment
+Dark gradient card
+Amber gem icon
+Serif italic headline:Package the process with intention.
+
+
+It contains:
+Prompt text editor
+Visibility choices
+Free/locked/private/recipe presentation
+Unlock price
+Recipe and workflow options
+AI stack selection
+Custom stack field
+Workflow notes
+Optional creator notes
+Intent flags
+This is a very rich submission flow. It is less like uploading a post and more like packaging a mini creative case study.
+Prompt visibility selector
+The visibility choices use large selectable tiles.
+Each tile includes:
+Small uppercase eyebrow
+State name
+Descriptive explanation
+Selected/unselected border treatment
+The user is asked to make an editorial and commercial decision about the process:
+Reveal it
+Lock it
+Keep it private
+Turn it into a recipe
+Pricing block
+The price field is placed inside an amber-tinted bordered area.
+It includes:
+Unlock Price label
+Dollar-prefixed input
+Lock icon
+Premium visual treatment
+The interface makes the submission feel commerce-ready, though the implementation currently defers real billing.
+AI stack and workflow
+The AI stack area uses:
+Tool chips
+Purple-selected state
+Custom stack input
+Structured storage explanation
+Workflow notes are presented as a large textarea, inviting the creator to document process rather than merely submit a finished artifact.
+Submit lower view
+The right-hand column is the creator’s market-facing preview and forecast panel.
+It begins with:
+Prompt Market Forecast
+
+Forecast card
+This card displays:
+A projected prompt value or market signal
+Visibility state
+Stack depth
+Number of attached tools
+Purple atmospheric glow
+It helps the creator understand how their package is being positioned.
+Positioning Note
+A separate card explains the strategic value of bundling:
+The finished clip
+The prompt
+The workflow
+The AI stack
+This turns submission into a form of creator merchandising.
+Audience/market tags
+Another card displays category tags and audience signals.
+Commerce status notice
+A green/emerald notice says that the system is commerce-ready while billing is deferred.
+This is an important trust signal: it tries to distinguish future monetization infrastructure from currently active payments.
+Bottom actions
+On desktop, the main submit button is in the left form column.
+On mobile, the submit action is repeated in the lower/right flow so it remains reachable after the creator has completed the long form.
+Submit states
+The page supports:
+Loading spinner
+Sign-in gate
+Submission success state
+Error message
+Editorial review confirmation
+The success state is a centered emerald panel reading:
+Submission Received
+
+It explains that the film and prompt package are queued for editorial review.
+4. Creators page
+Route: /creators
+Source: [`src/pages/Creators.tsx`](/Users/Ira/Desktop/HOTRANK/src/pages/Creators.tsx)
+The Creators page uses the same two-column editorial layout as the homepage.
+Creators hero / upper view
+The left column begins with:
+Top Creators
+
+Subheading:
+The people shaping AI video culture. Ranked by Heat, consistency, and impact.
+
+This makes creator identity a first-class ranking object rather than a secondary profile directory.
+Featured creator cards
+The first three creators appear as large featured cards.
+Each card includes:
+Large avatar
+Creator username
+Heat score
+Rising or tracked state
+Rank number
+Approved count
+Heat Units
+Source: Supabase
+The top card receives the strongest visual prominence through its size and position.
+The cards use charcoal backgrounds with zinc borders and become brighter on hover.
+The rank number is displayed on the right side in oversized typography.
+Creators middle view
+Creator ranking list
+The right column is titled:
+Creator Rankings
+
+It includes filter tabs:
+Trending Now
+This Week
+All-Time Greats
+The selected filter is purple; inactive filters remain gray.
+The list rows are compact and scan-friendly:
+Rank
+Avatar
+Username
+Heat number
+Rising activity icon or Stable label
+This mirrors the main rankings experience but moves the ranked object from clips to people.
+Creators lower view
+The desktop footer is a small uppercase readout:
+Forbes creators list meets Billboard power rankings
+
+This is a positioning line rather than an operational footer. It frames the page as a power list or cultural index.
+If there are no creators, the featured section becomes a calm empty state with:
+Activity icon
+No creators yet
+Explanation that approved submissions will populate creator rankings
+5. Insights page
+Route: /insights
+Source: [`src/pages/Insights.tsx`](/Users/Ira/Desktop/HOTRANK/src/pages/Insights.tsx)
+Insights is the explanatory/editorial page. It teaches users how HotRank’s heat system works and surfaces cultural signals.
+Insights hero / upper view
+The page begins with:
+Heat Insights
+
+Subheading:
+See what’s rising, why it ranks, and how Heat works.
+
+The left column is the educational content surface.
+Heat Score explanation
+The first major card explains the Heat system.
+It uses:
+File/document icon in purple
+Large white heading
+Paragraph explanation
+Supporting grid of signal cards
+The visual tone is more explanatory than the homepage, but it remains dark and premium.
+The card includes a small bottom metadata strip with:
+Heat V2 badge
+Version-style product language
+Audience-facing signals
+The second major card explains what viewers see around ranked clips.
+It uses:
+Emerald chart icon
+Supporting description
+Vertical list of signal explanations
+This turns the ranking system into a visible product feature rather than a hidden algorithm.
+Insights middle view
+The right column is titled:
+Cultural Pulse
+
+It contains insight cards with strong left borders.
+Fastest Rising Style
+A purple-accented card shows:
+Label: Fastest Rising Style
+Style name such as Fluid Simulations
+Percentage increase
+Activity icon
+Breakout Movement
+A pink-accented card describes a movement or stylistic transition, for example:
+Architecture to Fluid Dynamics
+Supporting explanation about creators moving toward richer motion
+Where Discovery is Happening
+An emerald-accented card presents platforms such as:
+TikTok
+X
+Each platform receives:
+Name
+Discovery role
+Compact supporting label
+Insights lower view
+The page continues with additional cultural and ranking context inside the scrollable right-side panel.
+It does not use a large promotional footer. Its lower structure remains report-like and editorial.
+The experience is closer to a trend intelligence briefing than a standard “About” page.
+6. Profile page
+Routes:
+/profile
+/profile/:id
+Source: [`src/pages/Profile.tsx`](/Users/Ira/Desktop/HOTRANK/src/pages/Profile.tsx)
+The profile is a creator portfolio and activity surface.
+Because the full file is large, its visual system is centered on:
+Profile hero
+Creator identity
+Creator stats
+Tabbed content
+Submission cards
+Saved/ignited/following states
+Profile editing
+Profile hero / upper view
+The top profile area is built from:
+Avatar
+Display name
+Username/handle
+Creator biography
+Profile links
+Creator status/badge
+Edit profile action for the owner
+The profile hero is designed to feel like a creative portfolio header rather than a conventional social profile.
+The typography remains compact and premium, with identity information prioritized over follower-count theatrics.
+Profile middle view
+The profile exposes creator metrics and portfolio activity.
+Likely visible content categories include:
+Uploads
+Saved
+Ignited
+Following
+Stats
+The profile tabs are intended to reflect real Supabase-backed activity.
+Cards expose:
+Thumbnail
+Title
+Platform
+Creator identity
+Prompt/recipe indicators
+Ranking or submission status
+Interaction state
+Profile lower view
+The profile lower region is driven by tab content and empty states.
+Empty states are intentionally premium and restrained rather than generic:
+No uploads
+No saved clips
+No ignited clips
+No following profiles
+The user’s own profile also supports editing through modal panels for:
+Display name
+Username/handle
+Bio
+Avatar
+External links
+7. Login page
+Route: /login
+Source: [`src/pages/Login.tsx`](/Users/Ira/Desktop/HOTRANK/src/pages/Login.tsx)
+The Login page is minimal and functional.
+Login hero / upper view
+The primary focus is the authentication form.
+The screen uses:
+Dark background
+Centered or focused form container
+White typography
+Small supporting labels
+Email input
+Password input
+Strong white submit button
+The form language is restrained and direct, matching the product’s premium tone.
+Login middle view
+The main interaction area includes:
+Email field
+Password field
+Login action
+Error feedback
+Loading state
+Link to signup
+Input fields use dark zinc backgrounds with subtle borders and purple focus states.
+Login lower view
+The lower part provides account creation/navigation context, such as:
+New-user signup link
+Return-to-product action
+Authentication feedback
+There is no elaborate marketing content on this page. It is intentionally conversion-focused.
+8. Signup page
+Route: /signup
+Source: [`src/pages/Signup.tsx`](/Users/Ira/Desktop/HOTRANK/src/pages/Signup.tsx)
+Signup follows the same visual language as Login.
+Signup hero
+The page presents account creation as the gateway to creator participation.
+The main form focuses on:
+Email
+Password
+Account creation
+Validation messages
+Link back to login
+Signup middle
+The form uses the same dark rounded controls, muted labels, and white primary action.
+The interface emphasizes that users are joining the ranking ecosystem rather than merely registering for a generic SaaS product.
+Signup lower
+The page contains navigation back to the login flow and sign-up status feedback.
+Footer behavior across the app
+HotRank does not currently have a conventional global website footer with:
+Company links
+Social links
+Legal links
+Newsletter form
+Copyright statement
+Instead, each page uses a contextual lower strip.
+Examples:
+Homepage: Supabase submission count and live status
+Creators: power-list positioning statement
+Insights: continued cultural signal cards
+Submit: commerce readiness notice and deferred billing note
+Profile: tab content and creator portfolio continuation
+This is deliberate. The app behaves like an always-on product console, not a long-form marketing site.
+Overall UX character
+The interface communicates:
+Editorial authority
+Live ranking pressure
+AI-native creative culture
+Premium creator identity
+Data-backed heat
+Controlled exclusivity
+Future commerce
+Its strongest UX pattern is the repeated two-column structure:
+Left: featured, editorial, or explanatory content
+Right: ranked, analytical, or market-facing content
+Its strongest interaction pattern is progressive reveal:
+Feed row
+Detail overlay
+Prompt/recipe depth
+Creator identity
+Unlock or interaction layer
+Its main UX weakness is density. The app contains substantial information—scores, signals, creator data, prompt metadata, workflow notes, statuses, and commerce states—inside a relatively compact viewport. This creates a sophisticated feel, but new users may need stronger onboarding and clearer explanation of what “Heat,” “Ignite,” “Official,” “Approved,” and “Prompt Capsule” mean.
