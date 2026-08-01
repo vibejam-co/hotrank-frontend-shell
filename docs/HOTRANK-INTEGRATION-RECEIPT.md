@@ -15,7 +15,7 @@
 - Shell-seal / integration checkpoint: `f12609c34d92ac6947b0c7fbccf7498c032401c8`
 - Latest integration checkpoint: `3b8b88f661d32cabcb689574e8a73702a3fd8d97`
 - Final repair checkpoint: `813e43514aa63854a6564f69e078306f139d9d32`
-- Final receipt checkpoint: pending this receipt commit.
+- Final receipt checkpoint: `86a9dc040e980f6c42c53865334ae5919cf8f4c5`.
 - Routes smoke-verified: `/`, `/rankings`, `/clip/clip-2`, `/creators`, `/creator/eliot`, `/submit`, `/saved`, `/profile`, `/activity`, `/login`, `/signup`, unknown-route handling.
 - Responsive evidence: 84 route/viewport checks across 1536×1152, 1440×900, 1280×800, 1024×768, 768×1024, 430×932, 390×844; zero overflow failures.
 - Interaction evidence: mobile navigation, search Escape close, Save, share modal/copy path, Ignite explanation, auth-required error state.
