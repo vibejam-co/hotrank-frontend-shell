@@ -12,3 +12,12 @@
 - Donor starting status: pre-existing `M supabase/.temp/cli-latest`; no shell work touched it.
 - Production: NO-GO; no deployment or production configuration was changed.
 - Preview: not generated; no Vercel project access is present in this shell.
+- Shell-seal / integration checkpoint: `f12609c34d92ac6947b0c7fbccf7498c032401c8`
+- Routes smoke-verified: `/`, `/clip/clip-3`, `/login`; search open/close; mobile bottom navigation present.
+- Responsive evidence: 390×844 screenshot captured; viewport reset after verification.
+- Typecheck: PASS (`npx tsc --noEmit`)
+- Build: PASS (`npm run build`)
+- Diff hygiene: PASS (`git diff --check`)
+- Console: PASS (0 browser errors in smoke run)
+- Lint/tests: no lint or test scripts are defined in `package.json`.
+- Genuine blocker: Supabase values are not present in the shell environment, so live backend/auth execution and Preview deployment remain unverified.
