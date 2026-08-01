@@ -13,11 +13,14 @@
 - Production: NO-GO; no deployment or production configuration was changed.
 - Preview: not generated; no Vercel project access is present in this shell.
 - Shell-seal / integration checkpoint: `f12609c34d92ac6947b0c7fbccf7498c032401c8`
-- Routes smoke-verified: `/`, `/clip/clip-3`, `/login`; search open/close; mobile bottom navigation present.
-- Responsive evidence: 390×844 screenshot captured; viewport reset after verification.
+- Latest integration checkpoint: `3b8b88f661d32cabcb689574e8a73702a3fd8d97`
+- Routes smoke-verified: `/`, `/rankings`, `/clip/clip-2`, `/creators`, `/creator/eliot`, `/submit`, `/saved`, `/profile`, `/activity`, `/login`, `/signup`, unknown-route handling.
+- Responsive evidence: 84 route/viewport checks across 1536×1152, 1440×900, 1280×800, 1024×768, 768×1024, 430×932, 390×844; zero overflow failures.
+- Interaction evidence: mobile navigation, search Escape close, Save, share modal/copy path, Ignite explanation, auth-required error state.
 - Typecheck: PASS (`npx tsc --noEmit`)
 - Build: PASS (`npm run build`)
 - Diff hygiene: PASS (`git diff --check`)
 - Console: PASS (0 browser errors in smoke run)
 - Lint/tests: no lint or test scripts are defined in `package.json`.
+- Adapter semantics: donor submission field contract, save/ignite counts, rank ordering, movement, and Heat Score transformation are isolated in `src/lib/integrations/hotrank.ts`; no donor UI was imported.
 - Genuine blocker: Supabase values are not present in the shell environment, so live backend/auth execution and Preview deployment remain unverified.
