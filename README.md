@@ -1,32 +1,49 @@
 # HOTRANK Frontend Shell
 
-Premium, front-end-only React + TypeScript shell for HOTRANK’s cinematic AI-video ranking experience.
+Isolated premium frontend shell for HOTRANK’s cinematic AI-video ranking experience.
 
-## Run locally
+This repository is the canonical frontend publication target. The legacy `/Users/Ira/Desktop/HOTRANK` repository is a read-only backend and contract donor; its `.git` directory, legacy UI, and frontend tree must not be copied into this repository.
+
+## Local setup
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
 
-## Routes included
+Required public browser variables in `.env.local`:
+
+```text
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-public-anon-or-publishable-key
+```
+
+Never commit `.env.local` or secret credentials. The anon/publishable key is intended for browser use; service-role keys do not belong in this application.
+
+## Development and validation
+
+- Development: `npm run dev`
+- Production build: `npm run build`
+- Typecheck: `npx tsc --noEmit`
+- Diff hygiene: `git diff --check`
+- Preview locally: `npm run preview`
+
+This package currently does not define separate `lint` or `test` scripts.
+
+## Routes
 
 - `/` — live rankings homepage
-- `/rankings` — filters, ranked chart, movement, heat score, mini rails
-- `/clip/clip-1` — clip detail view
+- `/rankings` — rankings explorer
+- `/clip/:id` — clip detail and quick view
 - `/creators` — creator discovery
-- `/creator/eliot` — creator profile view
-- `/submit` — four-step submission shell with preview and success modal
-- `/saved` — watchlist state
-- `/profile` — account overview placeholder surface
-- `/activity` — notifications/activity surface
+- `/creator/:id` — creator profile
+- `/submit` — four-stage submission shell
+- `/saved` — watchlist
+- `/profile` — current-user profile surface
+- `/activity` — activity and notifications
+- `/login` and `/signup` — authentication surfaces
 
-## Integration boundary
+## Deployment boundary
 
-The UI consumes `Clip`, `Creator`, and `Adapter` interfaces from `src/types.ts`. The current `src/lib/adapters/mockAdapter.ts` is the only data source used by the shell. Replace that adapter’s methods with backend calls later; keep page components consuming the same typed objects.
-
-Interaction state is intentionally local: saved clips, selected clip, filters, route state, and modal state. No backend logic, authentication, ranking logic, ingestion logic, or business rules are included.
-
-## Design system
-
-Tokens and reusable styling live in `src/styles.css`: near-black editorial surfaces, ivory display typography, restrained HOTRANK pink, hairline borders, ranking numerals, heat treatment, responsive rails, and accessible focus states. `src/App.tsx` contains the reusable shell primitives used across screens: `ClipCard`, `Leaderboard`, `Rail`, `Movement`, `ModalLayer`, and the layout/page surfaces.
+Production deployment, domain changes, OAuth configuration, Supabase configuration, and Vercel project linkage require separate explicit approval. This publication task does not create or promote a Production deployment.

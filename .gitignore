@@ -3,3 +3,9 @@ dist/
 .env
 .env.*
 !.env.example
+.vercel/
+coverage/
+playwright-report/
+test-results/
+*.log
+.DS_Store
