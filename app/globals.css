@@ -33,3 +33,13 @@
 @media(max-width:680px){.shell{padding-inline:16px}.hero-card{aspect-ratio:16/9}.hero-card .media{min-height:0}.profile-lower{grid-template-columns:1fr}.editor-grid .card.wide-card{grid-row:auto}.tabs{overflow-x:auto;justify-content:flex-start;white-space:nowrap}.tabs button{flex:0 0 auto}.saved-rail{grid-auto-columns:180px}.saved-card-body{align-items:flex-start}.saved-card-stat{width:100%;justify-content:space-between}}
 
 .tag{background:transparent;appearance:none}.view-all{background:transparent;border:0;padding:0;font:inherit;color:var(--pink);cursor:pointer}.submit-layout{padding-bottom:104px}
+
+/* Preview state is independent from media readiness. */
+.adaptive-media .media-poster{opacity:1}
+.adaptive-media .media-poster.is-ready{opacity:1}
+.adaptive-media .preview-video{z-index:0;opacity:0}
+.adaptive-media .preview-video.is-ready{opacity:0}
+.adaptive-media .preview-video.is-active{z-index:1;opacity:1}
+.feature-creator:after{background-position:center bottom}
+.profile-banner{background-position:center bottom}
+.profile-header>.avatar,.profile-identity>.avatar,.work-grid img{object-position:center bottom}

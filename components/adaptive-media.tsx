@@ -11,6 +11,7 @@ const ratioClass: Record<MediaRatio, string> = {
 };
 
 let activePreview: HTMLVideoElement | null = null;
+let activeStop: (() => void) | null = null;
 let hiddenListenerInstalled = false;
 
 function installHiddenListener() {
@@ -18,8 +19,7 @@ function installHiddenListener() {
   hiddenListenerInstalled = true;
   document.addEventListener("visibilitychange", () => {
     if (document.hidden && activePreview) {
-      activePreview.pause();
-      activePreview = null;
+      activeStop?.();
     }
   });
 }
@@ -29,16 +29,27 @@ export function AdaptiveMedia({
 }: {poster: string; video?: string; alt: string; ratio?: MediaRatio; href?: string; label?: React.ReactNode; className?: string}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [ready, setReady] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const [previewActive, setPreviewActive] = useState(false);
   useEffect(() => { installHiddenListener(); }, []);
+  const stop = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    const element = videoRef.current;
+    if (element) element.pause();
+    setPreviewActive(false);
+    if (activePreview === element) {
+      activePreview = null;
+      activeStop = null;
+    }
+  };
   useEffect(() => {
     const element = videoRef.current;
     if (!element) return;
     const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) { element.pause(); if (activePreview === element) activePreview = null; }
+      if (!entry.isIntersecting) stop();
     }, {threshold: 0.2});
     observer.observe(element);
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); stop(); };
   }, []);
   const start = (event: React.PointerEvent) => {
     if (!video || event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -46,19 +57,15 @@ export function AdaptiveMedia({
     timerRef.current = setTimeout(async () => {
       const element = videoRef.current;
       if (!element) return;
-      if (activePreview && activePreview !== element) activePreview.pause();
+      activeStop?.();
       activePreview = element;
-      try { await element.play(); } catch { setReady(false); }
+      activeStop = stop;
+      try { await element.play(); } catch { stop(); }
     }, 200);
   };
-  const stop = () => {
-    if (timerRef.current) clearTimeout(timerRef.current);
-    if (videoRef.current) videoRef.current.pause();
-    if (activePreview === videoRef.current) activePreview = null;
-  };
   const content = <div className={`adaptive-media media ${ratioClass[ratio]} ${className}`} onPointerEnter={start} onPointerLeave={stop}>
-    <img className={`media-poster ${ready ? "is-ready" : ""}`} src={poster} alt={alt}/>
-    {video && <video ref={videoRef} className={`preview-video ${ready ? "is-ready" : ""}`} src={video} muted playsInline preload="metadata" onCanPlay={() => setReady(true)} aria-label={`${alt} video preview`}/>}<div className="media-gradient"/>{label}
+    <img className="media-poster" src={poster} alt={alt}/>
+    {video && <video ref={videoRef} className={`preview-video ${previewActive ? "is-active" : ""}`} src={video} muted playsInline preload="metadata" onCanPlay={() => setVideoReady(true)} onPlaying={() => setPreviewActive(true)} onPause={() => setPreviewActive(false)} data-video-ready={videoReady} aria-label={`${alt} video preview`}/>}<div className="media-gradient"/>{label}
   </div>;
   return href ? <Link href={href} className="media-link">{content}</Link> : content;
 }
