@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 170" role="img" aria-label="HOTRANK">
+  <g fill="#070708" font-family="Inter Display, Inter, Arial, sans-serif" font-size="116" font-weight="520" letter-spacing="9">
+    <text x="0" y="127">HOTR</text>
+    <text x="708" y="127">NK</text>
+  </g>
+  <g transform="translate(575,23) scale(1.18)">
+    <polygon points="50,0 100,100 78,86 50,40 22,86 0,100" fill="#070708"/>
+    <polygon points="50,52 76,74 64,81 50,69 36,81 24,74" fill="#070708"/>
+  </g>
+</svg>

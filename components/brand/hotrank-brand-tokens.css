@@ -1,0 +1,26 @@
+:root {
+  --hotrank-pink: #F71C6A;
+  --hotrank-ink: #070708;
+  --hotrank-ivory: #F7F5F2;
+  --hotrank-logo-wordmark-desktop: clamp(180px, 14vw, 220px);
+  --hotrank-logo-wordmark-tablet: 168px;
+  --hotrank-logo-icon-mobile: 30px;
+}
+
+.hotrank-logo-wordmark {
+  width: var(--hotrank-logo-wordmark-desktop);
+  height: auto;
+  display: block;
+}
+
+.hotrank-logo-icon {
+  width: var(--hotrank-logo-icon-mobile);
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .hotrank-logo-wordmark {
+    width: var(--hotrank-logo-wordmark-tablet);
+  }
+}
