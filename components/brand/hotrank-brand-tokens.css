@@ -5,12 +5,34 @@
   --hotrank-logo-wordmark-desktop: clamp(180px, 14vw, 220px);
   --hotrank-logo-wordmark-tablet: 168px;
   --hotrank-logo-icon-mobile: 30px;
+  --hotrank-logo-lockup-gap: 14px;
 }
 
 .hotrank-logo-wordmark {
   width: var(--hotrank-logo-wordmark-desktop);
   height: auto;
   display: block;
+}
+
+.hotrank-logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--hotrank-logo-lockup-gap);
+  width: var(--hotrank-logo-wordmark-desktop);
+  height: auto;
+  line-height: 0;
+}
+
+.hotrank-logo-lockup-mark {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+}
+
+.hotrank-logo-lockup-wordmark {
+  width: calc(100% - 32px - var(--hotrank-logo-lockup-gap));
+  height: auto;
+  flex: 1 1 auto;
 }
 
 .hotrank-logo-icon {
@@ -22,5 +44,34 @@
 @media (max-width: 1024px) {
   .hotrank-logo-wordmark {
     width: var(--hotrank-logo-wordmark-tablet);
+  }
+
+  .hotrank-logo-lockup {
+    width: var(--hotrank-logo-wordmark-tablet);
+  }
+
+  .hotrank-logo-lockup-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hotrank-logo-lockup-wordmark {
+    width: calc(100% - 30px - var(--hotrank-logo-lockup-gap));
+  }
+}
+
+@media (max-width: 680px) {
+  .hotrank-logo-lockup {
+    width: 180px;
+    gap: 10px;
+  }
+
+  .hotrank-logo-lockup-mark {
+    width: 28px;
+    height: 28px;
+  }
+
+  .hotrank-logo-lockup-wordmark {
+    width: calc(100% - 28px - 10px);
   }
 }
