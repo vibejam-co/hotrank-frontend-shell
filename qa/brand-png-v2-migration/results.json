@@ -1,0 +1,80 @@
+[
+  {
+    "route": "/creators",
+    "width": 1440,
+    "status": 200,
+    "src": "/brand/hotrank/v2/hotrank-primary.png",
+    "box": {
+      "x": 32,
+      "y": 18.5,
+      "width": 51,
+      "height": 34
+    },
+    "errors": []
+  },
+  {
+    "route": "/creators",
+    "width": 390,
+    "status": 200,
+    "src": "/brand/hotrank/v2/hotrank-primary.png",
+    "box": {
+      "x": 16,
+      "y": 17,
+      "width": 40.5,
+      "height": 27
+    },
+    "errors": []
+  },
+  {
+    "route": "/clips/the-last-blue",
+    "width": 1440,
+    "status": 200,
+    "src": "/brand/hotrank/v2/hotrank-primary.png",
+    "box": {
+      "x": 32,
+      "y": 18.5,
+      "width": 51,
+      "height": 34
+    },
+    "errors": []
+  },
+  {
+    "route": "/clips/the-last-blue",
+    "width": 390,
+    "status": 200,
+    "src": "/brand/hotrank/v2/hotrank-primary.png",
+    "box": {
+      "x": 16,
+      "y": 17,
+      "width": 40.5,
+      "height": 27
+    },
+    "errors": []
+  },
+  {
+    "route": "/submit",
+    "width": 1440,
+    "status": 200,
+    "src": "/brand/hotrank/v2/hotrank-primary.png",
+    "box": {
+      "x": 32,
+      "y": 18.5,
+      "width": 51,
+      "height": 34
+    },
+    "errors": []
+  },
+  {
+    "route": "/submit",
+    "width": 390,
+    "status": 200,
+    "src": "/brand/hotrank/v2/hotrank-primary.png",
+    "box": {
+      "x": 16,
+      "y": 17,
+      "width": 40.5,
+      "height": 27
+    },
+    "errors": []
+  }
+]

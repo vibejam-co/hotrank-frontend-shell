@@ -1,77 +1,39 @@
+/*
+ HOTRANK BRAND LOCK
+ Artwork is canonical raster artwork.
+ Do not reconstruct, redraw, trace or typeset.
+ Resize proportionally only.
+*/
 :root {
   --hotrank-pink: #F71C6A;
   --hotrank-ink: #070708;
   --hotrank-ivory: #F7F5F2;
-  --hotrank-logo-wordmark-desktop: clamp(180px, 14vw, 220px);
-  --hotrank-logo-wordmark-tablet: 168px;
-  --hotrank-logo-icon-mobile: 30px;
-  --hotrank-logo-lockup-gap: 14px;
+  --hotrank-logo-desktop-height: 34px;
+  --hotrank-logo-tablet-height: 30px;
+  --hotrank-logo-mobile-height: 27px;
 }
 
-.hotrank-logo-wordmark {
-  width: var(--hotrank-logo-wordmark-desktop);
-  height: auto;
+.hotrank-logo {
   display: block;
+  width: auto;
+  height: var(--hotrank-logo-desktop-height);
+  object-fit: contain;
 }
 
-.hotrank-logo-lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--hotrank-logo-lockup-gap);
-  width: var(--hotrank-logo-wordmark-desktop);
-  height: auto;
-  line-height: 0;
-}
-
-.hotrank-logo-lockup-mark {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 auto;
-}
-
-.hotrank-logo-lockup-wordmark {
-  width: calc(100% - 32px - var(--hotrank-logo-lockup-gap));
-  height: auto;
-  flex: 1 1 auto;
-}
-
-.hotrank-logo-icon {
-  width: var(--hotrank-logo-icon-mobile);
-  height: auto;
-  display: block;
+.hotrank-logo-iconPink,
+.hotrank-logo-iconWhite,
+.hotrank-logo-iconBlack {
+  height: var(--hotrank-logo-mobile-height);
 }
 
 @media (max-width: 1024px) {
-  .hotrank-logo-wordmark {
-    width: var(--hotrank-logo-wordmark-tablet);
-  }
-
-  .hotrank-logo-lockup {
-    width: var(--hotrank-logo-wordmark-tablet);
-  }
-
-  .hotrank-logo-lockup-mark {
-    width: 30px;
-    height: 30px;
-  }
-
-  .hotrank-logo-lockup-wordmark {
-    width: calc(100% - 30px - var(--hotrank-logo-lockup-gap));
+  .hotrank-logo {
+    height: var(--hotrank-logo-tablet-height);
   }
 }
 
 @media (max-width: 680px) {
-  .hotrank-logo-lockup {
-    width: 180px;
-    gap: 10px;
-  }
-
-  .hotrank-logo-lockup-mark {
-    width: 28px;
-    height: 28px;
-  }
-
-  .hotrank-logo-lockup-wordmark {
-    width: calc(100% - 28px - 10px);
+  .hotrank-logo {
+    height: var(--hotrank-logo-mobile-height);
   }
 }
