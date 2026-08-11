@@ -8,32 +8,40 @@
   --hotrank-pink: #F71C6A;
   --hotrank-ink: #070708;
   --hotrank-ivory: #F7F5F2;
-  --hotrank-logo-desktop-height: 34px;
-  --hotrank-logo-tablet-height: 30px;
-  --hotrank-logo-mobile-height: 27px;
+  --hotrank-logo-desktop-width: 210px;
+  --hotrank-logo-tablet-width: 190px;
+  --hotrank-logo-mobile-width: 165px;
 }
 
 .hotrank-logo {
   display: block;
   width: auto;
-  height: var(--hotrank-logo-desktop-height);
+  height: auto;
   object-fit: contain;
 }
 
 .hotrank-logo-iconPink,
 .hotrank-logo-iconWhite,
 .hotrank-logo-iconBlack {
-  height: var(--hotrank-logo-mobile-height);
+  width: auto;
+  height: 30px;
+}
+
+.hotrank-logo-primary,
+.hotrank-logo-light {
+  width: var(--hotrank-logo-desktop-width);
 }
 
 @media (max-width: 1024px) {
-  .hotrank-logo {
-    height: var(--hotrank-logo-tablet-height);
+  .hotrank-logo-primary,
+  .hotrank-logo-light {
+    width: var(--hotrank-logo-tablet-width);
   }
 }
 
 @media (max-width: 680px) {
-  .hotrank-logo {
-    height: var(--hotrank-logo-mobile-height);
+  .hotrank-logo-primary,
+  .hotrank-logo-light {
+    width: var(--hotrank-logo-mobile-width);
   }
 }

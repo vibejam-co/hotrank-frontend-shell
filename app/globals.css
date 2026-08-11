@@ -208,6 +208,11 @@
   .home-hero+.section>.rail>.card.ratio-card-9-16{width:145px}
   .home-hero+.section>.rail>.card.ratio-card-2-1{width:250px}
 }
+
+/* Surgical Rising Now repair: authored widths, shared baseline, and filled media. */
+.home-hero+.section>.rail>.card .media-poster,
+.home-hero+.section>.rail>.card .preview-video{object-fit:cover;background:transparent}
+.home-hero+.section>.rail>.card .clip-card-body{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center}
 @media(max-width:680px){
   .home-hero+.section>.rail{gap:12px}
   .home-hero+.section>.rail>.card{height:172px}

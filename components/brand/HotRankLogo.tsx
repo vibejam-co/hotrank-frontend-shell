@@ -8,17 +8,17 @@ export type HotRankLogoProps = {
 };
 
 const artwork = {
-  primary: "/brand/hotrank/v2/hotrank-primary.png",
+  primary: "/brand/hotrank/v2/hotrank-wordmark-dark-trimmed.png",
   light: "/brand/hotrank/v2/hotrank-light.png",
-  iconPink: "/brand/hotrank/v2/hotrank-icon-pink.png",
+  iconPink: "/brand/hotrank/v2/hotrank-icon-pink-trimmed.png",
   iconWhite: "/brand/hotrank/v2/hotrank-icon-white.png",
   iconBlack: "/brand/hotrank/v2/hotrank-icon-black.png",
 } as const;
 
 const dimensions = {
-  primary: { width: 1536, height: 1024 },
+  primary: { width: 998, height: 243 },
   light: { width: 1536, height: 1024 },
-  iconPink: { width: 1024, height: 1024 },
+  iconPink: { width: 680, height: 635 },
   iconWhite: { width: 1536, height: 1024 },
   iconBlack: { width: 1536, height: 1024 },
 } as const;

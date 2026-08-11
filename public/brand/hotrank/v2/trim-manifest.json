@@ -1,0 +1,24 @@
+{
+  "method": "Alpha-content crop only; source pixels inside each retained box are unchanged.",
+  "alphaThreshold": "> 4",
+  "assets": {
+    "hotrank-wordmark-dark-trimmed.png": {
+      "source": "hotrank-primary.png",
+      "sourceDimensions": [1536, 1024],
+      "visiblePixelBounds": [267, 336, 1265, 579],
+      "trimmedDimensions": [998, 243]
+    },
+    "hotrank-icon-pink-trimmed.png": {
+      "source": "hotrank-icon-pink.png",
+      "sourceDimensions": [1024, 1024],
+      "visiblePixelBounds": [165, 187, 845, 822],
+      "trimmedDimensions": [680, 635]
+    },
+    "hotrank-favicon-trimmed.png": {
+      "source": "hotrank-favicon.png",
+      "sourceDimensions": [1536, 1024],
+      "visiblePixelBounds": [489, 240, 1036, 759],
+      "trimmedDimensions": [547, 519]
+    }
+  }
+}
