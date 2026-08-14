@@ -1,6 +1,6 @@
 # HOTRANK Canonical Frontend V1 QA Baseline
 
-Status: Phase 0 baseline
+Status: Phase 0 baseline plus Phase 0.5 mobile navigation recertification
 
 Captured: 2026-08-14
 
@@ -44,6 +44,11 @@ Machine-readable capture evidence is in:
   header interaction evidence; and
 - `profile-repair-results.json` — before/after evidence for the repaired
   768px profile overflow.
+
+Phase 0.5 focused mobile-navigation evidence is in
+`mobile-nav-repair/`, including closed/open captures at 390px, open captures
+at 360px and 430px, and `results.json` covering interaction, destination,
+history, secondary-route, tablet, desktop, focus, and console checks.
 
 ## Expected visual invariants
 

@@ -1,0 +1,265 @@
+{
+  "capturedAt": "2026-08-14",
+  "baseUrl": "http://localhost:3007",
+  "open390": {
+    "bodyOverflow": "visible",
+    "controls": "hotrank-mobile-menu",
+    "expanded": "true",
+    "focus": "LIVE",
+    "items": 4,
+    "overflow": false,
+    "rect": {
+      "bottom": 256,
+      "height": 194,
+      "left": 16,
+      "right": 374,
+      "top": 62,
+      "width": 358
+    },
+    "role": "menu"
+  },
+  "escape": {
+    "expanded": "false",
+    "focus": "Open menu",
+    "menu": false
+  },
+  "closeAffordance": {
+    "expanded": "false",
+    "focus": "Open menu",
+    "menu": false
+  },
+  "outside": {
+    "expanded": "false",
+    "menu": false
+  },
+  "focus": {
+    "hiddenMenuItems": 0,
+    "outlineColor": "rgb(236, 47, 115)",
+    "outlineStyle": "solid",
+    "role": "menuitem"
+  },
+  "navigation": {
+    "LIVE": {
+      "expanded": "false",
+      "expected": true,
+      "menu": false,
+      "overflow": false,
+      "url": "/"
+    },
+    "RANKINGS": {
+      "expanded": "false",
+      "expected": true,
+      "menu": false,
+      "overflow": false,
+      "url": "/rankings"
+    },
+    "CREATORS": {
+      "expanded": "false",
+      "expected": true,
+      "menu": false,
+      "overflow": false,
+      "url": "/creators"
+    },
+    "SUBMIT": {
+      "expanded": "false",
+      "expected": true,
+      "menu": false,
+      "overflow": false,
+      "url": "/submit"
+    }
+  },
+  "mobileMatrix": {
+    "360": {
+      "closed": {
+        "headerHeight": 62,
+        "menu": false,
+        "menuDisplay": "grid",
+        "overflow": false
+      },
+      "open": {
+        "focusRole": "menuitem",
+        "headerHeight": 62,
+        "items": 4,
+        "menuFits": true,
+        "menuHeight": 194,
+        "overflow": false
+      }
+    },
+    "375": {
+      "closed": {
+        "headerHeight": 62,
+        "menu": false,
+        "menuDisplay": "grid",
+        "overflow": false
+      },
+      "open": {
+        "focusRole": "menuitem",
+        "headerHeight": 62,
+        "items": 4,
+        "menuFits": true,
+        "menuHeight": 194,
+        "overflow": false
+      }
+    },
+    "390": {
+      "closed": {
+        "headerHeight": 62,
+        "menu": false,
+        "menuDisplay": "grid",
+        "overflow": false
+      },
+      "open": {
+        "focusRole": "menuitem",
+        "headerHeight": 62,
+        "items": 4,
+        "menuFits": true,
+        "menuHeight": 194,
+        "overflow": false
+      }
+    },
+    "393": {
+      "closed": {
+        "headerHeight": 62,
+        "menu": false,
+        "menuDisplay": "grid",
+        "overflow": false
+      },
+      "open": {
+        "focusRole": "menuitem",
+        "headerHeight": 62,
+        "items": 4,
+        "menuFits": true,
+        "menuHeight": 194,
+        "overflow": false
+      }
+    },
+    "412": {
+      "closed": {
+        "headerHeight": 62,
+        "menu": false,
+        "menuDisplay": "grid",
+        "overflow": false
+      },
+      "open": {
+        "focusRole": "menuitem",
+        "headerHeight": 62,
+        "items": 4,
+        "menuFits": true,
+        "menuHeight": 194,
+        "overflow": false
+      }
+    },
+    "430": {
+      "closed": {
+        "headerHeight": 62,
+        "menu": false,
+        "menuDisplay": "grid",
+        "overflow": false
+      },
+      "open": {
+        "focusRole": "menuitem",
+        "headerHeight": 62,
+        "items": 4,
+        "menuFits": true,
+        "menuHeight": 194,
+        "overflow": false
+      }
+    }
+  },
+  "secondary": {
+    "/clips/echoes-of-tomorrow": {
+      "bodyText": " Back to rankings\n← Previous clip　　Next clip →\n▶　 00:18 / 00:45\nEchoes of Tomorr",
+      "buttonExpanded": "false",
+      "header": true,
+      "overflow": false,
+      "overlay": false
+    },
+    "/creators/adara-voss": {
+      "bodyText": "Adara Voss ◆\n\nCinematic world-builder and storyteller exploring the edge of imag",
+      "buttonExpanded": "false",
+      "header": true,
+      "overflow": false,
+      "overlay": false
+    },
+    "/profile": {
+      "bodyText": "Lena Marlowe\n@lenamarlowe\nMember since March 2023\n287\nSAVED\n156\nFOLLOWING\n23\nSUB",
+      "buttonExpanded": "false",
+      "header": true,
+      "overflow": false,
+      "overlay": false
+    },
+    "/saved": {
+      "bodyText": "Saved\n432 saved items\nNewest saved⌄\nCLIPS\nPROMPTS\nCOLLECTIONS\nFOLLOWING\nRecently",
+      "buttonExpanded": "false",
+      "header": true,
+      "overflow": false,
+      "overlay": false
+    },
+    "/search": {
+      "bodyText": "SEARCH HOTRANK\nClose\nEsc\n/\n RECENT SEARCHES\nsprint finish　×\ngame winner　×\nmic’d ",
+      "buttonExpanded": "false",
+      "header": true,
+      "overflow": false,
+      "overlay": false
+    }
+  },
+  "desktop": {
+    "768": {
+      "headerHeight": 72,
+      "logoWidth": 190,
+      "mobileButtonDisplay": "none",
+      "navDisplay": "flex",
+      "overflow": false
+    },
+    "820": {
+      "headerHeight": 72,
+      "logoWidth": 190,
+      "mobileButtonDisplay": "none",
+      "navDisplay": "flex",
+      "overflow": false
+    },
+    "834": {
+      "headerHeight": 72,
+      "logoWidth": 190,
+      "mobileButtonDisplay": "none",
+      "navDisplay": "flex",
+      "overflow": false
+    },
+    "1024": {
+      "headerHeight": 72,
+      "logoWidth": 190,
+      "mobileButtonDisplay": "none",
+      "navDisplay": "flex",
+      "overflow": false
+    },
+    "1280": {
+      "headerHeight": 72,
+      "logoWidth": 210,
+      "mobileButtonDisplay": "none",
+      "navDisplay": "flex",
+      "overflow": false
+    },
+    "1440": {
+      "headerHeight": 72,
+      "logoWidth": 210,
+      "mobileButtonDisplay": "none",
+      "navDisplay": "flex",
+      "overflow": false
+    }
+  },
+  "history": {
+    "navigate": {
+      "menu": false,
+      "url": "/rankings"
+    },
+    "back": {
+      "menu": false,
+      "url": "/"
+    },
+    "forward": {
+      "menu": false,
+      "url": "/rankings"
+    }
+  },
+  "consoleErrors": []
+}
