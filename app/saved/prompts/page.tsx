@@ -1,3 +1,8 @@
-import {Tabs,PromptCard} from "@/components/cards"; import {imgs} from "@/lib/data"; import {CopyPrompt} from "@/components/copy-prompt";
-const cityPrompt="Cinematic wide shot of a woman on a rooftop at dusk, looking over a sprawling city. Moody clouds, soft haze, neon lights beginning to glow. Wind in her hair, introspective and calm.";
-export default function SavedPrompts(){return <main className="shell"><h1 className="page-title serif">Saved prompts</h1><Tabs active="PROMPTS"/><div className="card prompt-feature"><img src={imgs.city} alt="City dusk prompt reference"/><div><div className="label pink">▮ Saved May 18, 2025</div><h2 className="serif">City Dusk Reverie</h2><p className="prompt-copy">{cityPrompt}</p><div className="chips"><span className="tag">SORA</span><span className="tag">LUMA</span><span className="tag">RUNWAY</span><span className="tag">16:9</span></div></div><CopyPrompt prompt={cityPrompt} className="btn primary"/></div><div className="prompt-list section"><PromptCard image={imgs.mountain} title="Beyond the Valley"/><PromptCard image={imgs.forest} title="Forest Light Portrait"/><PromptCard image={imgs.neon} title="Neon Rainwalk"/><PromptCard image={imgs.desert} title="Desert Monolith"/></div></main>}
+import {Tabs, PromptCard} from "@/components/cards";
+import {CopyPrompt} from "@/components/copy-prompt";
+import {getSavedPromptsData} from "@/lib/hotrank";
+
+export default function SavedPrompts() {
+  const {featured, prompts} = getSavedPromptsData();
+  return <main className="shell"><h1 className="page-title serif">Saved prompts</h1><Tabs active="PROMPTS"/><div className="card prompt-feature"><img src={featured.image || ""} alt="City dusk prompt reference"/><div><div className="label pink">▮ Saved May 18, 2025</div><h2 className="serif">{featured.title}</h2><p className="prompt-copy">{featured.copy}</p><div className="chips">{featured.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div></div><CopyPrompt prompt={featured.copy} className="btn primary"/></div><div className="prompt-list section">{prompts.map((prompt) => <PromptCard key={prompt.id} prompt={prompt}/>)}</div></main>;
+}
