@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-08-14",
+  "search": {
+    "active": null,
+    "dialog": true
+  },
+  "searchArrowBeforeFix": {
+    "highlightCount": 1,
+    "highlighted": "Electric YouthLunak 78.9↑ 7"
+  },
+  "searchArrowAfterFix": [
+    "Chasing CurrentsOceanborn 81.4↑ 12"
+  ],
+  "searchEscapeFromHeader": {
+    "focus": "Open search",
+    "url": "/"
+  },
+  "portraitCopy": {
+    "buttonText": "Copy Prompt",
+    "buttons": 1
+  },
+  "clipExpand": {
+    "expanded": "true",
+    "intelligence": 0,
+    "breakdown": 1
+  },
+  "savedPromptTab": {
+    "promptLibrary": 1,
+    "url": "http://localhost:3007/saved"
+  },
+  "submit": {
+    "inputs": 8,
+    "preview": 1,
+    "continueDisabled": false
+  },
+  "mobileHeader": {
+    "bodyHasNavText": false,
+    "menuButtons": [
+      {
+        "aria": "Open menu",
+        "hasHandler": false
+      }
+    ],
+    "navVisible": "none"
+  }
+}

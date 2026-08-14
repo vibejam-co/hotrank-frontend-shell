@@ -1,0 +1,757 @@
+{
+  "capturedAt": "2026-08-14",
+  "baseUrl": "http://localhost:3007",
+  "routes": [
+    [
+      "home",
+      "/"
+    ],
+    [
+      "rankings",
+      "/rankings"
+    ],
+    [
+      "clip-landscape",
+      "/clips/echoes-of-tomorrow"
+    ],
+    [
+      "clip-portrait",
+      "/clips/last-horizon"
+    ],
+    [
+      "creators",
+      "/creators"
+    ],
+    [
+      "creator-profile",
+      "/creators/adara-voss"
+    ],
+    [
+      "submit",
+      "/submit"
+    ],
+    [
+      "saved",
+      "/saved"
+    ],
+    [
+      "saved-prompts",
+      "/saved/prompts"
+    ],
+    [
+      "activity",
+      "/activity"
+    ],
+    [
+      "profile",
+      "/profile"
+    ],
+    [
+      "search",
+      "/search"
+    ]
+  ],
+  "viewports": [
+    [
+      1440,
+      900,
+      "desktop"
+    ],
+    [
+      1024,
+      1180,
+      "tablet"
+    ],
+    [
+      390,
+      844,
+      "mobile"
+    ]
+  ],
+  "results": [
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/",
+      "check": {
+        "bodyLength": 917,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-home.png"
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/rankings",
+      "check": {
+        "bodyLength": 1555,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-rankings.png"
+    },
+    {
+      "route": "clip-landscape",
+      "path": "/clips/echoes-of-tomorrow",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/clips/echoes-of-tomorrow",
+      "check": {
+        "bodyLength": 639,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-clip-landscape.png"
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/clips/last-horizon",
+      "check": {
+        "bodyLength": 731,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-clip-portrait.png"
+    },
+    {
+      "route": "creators",
+      "path": "/creators",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/creators",
+      "check": {
+        "bodyLength": 1094,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-creators.png"
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/creators/adara-voss",
+      "check": {
+        "bodyLength": 863,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-creator-profile.png"
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/submit",
+      "check": {
+        "bodyLength": 907,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-submit.png"
+    },
+    {
+      "route": "saved",
+      "path": "/saved",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/saved",
+      "check": {
+        "bodyLength": 460,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-saved.png"
+    },
+    {
+      "route": "saved-prompts",
+      "path": "/saved/prompts",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/saved/prompts",
+      "check": {
+        "bodyLength": 1249,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-saved-prompts.png"
+    },
+    {
+      "route": "activity",
+      "path": "/activity",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/activity",
+      "check": {
+        "bodyLength": 648,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-activity.png"
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/profile",
+      "check": {
+        "bodyLength": 890,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-profile.png"
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "url": "http://localhost:3007/search",
+      "check": {
+        "bodyLength": 793,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      },
+      "screenshot": "qa/canonical-v1/1440-search.png"
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/",
+      "check": {
+        "bodyLength": 917,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-home.png"
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/rankings",
+      "check": {
+        "bodyLength": 1271,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-rankings.png"
+    },
+    {
+      "route": "clip-landscape",
+      "path": "/clips/echoes-of-tomorrow",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/clips/echoes-of-tomorrow",
+      "check": {
+        "bodyLength": 639,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-clip-landscape.png"
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/clips/last-horizon",
+      "check": {
+        "bodyLength": 632,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-clip-portrait.png"
+    },
+    {
+      "route": "creators",
+      "path": "/creators",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/creators",
+      "check": {
+        "bodyLength": 1094,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-creators.png"
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/creators/adara-voss",
+      "check": {
+        "bodyLength": 855,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-creator-profile.png"
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/submit",
+      "check": {
+        "bodyLength": 907,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-submit.png"
+    },
+    {
+      "route": "saved",
+      "path": "/saved",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/saved",
+      "check": {
+        "bodyLength": 460,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-saved.png"
+    },
+    {
+      "route": "saved-prompts",
+      "path": "/saved/prompts",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/saved/prompts",
+      "check": {
+        "bodyLength": 1249,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-saved-prompts.png"
+    },
+    {
+      "route": "activity",
+      "path": "/activity",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/activity",
+      "check": {
+        "bodyLength": 648,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-activity.png"
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/profile",
+      "check": {
+        "bodyLength": 890,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-profile.png"
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "url": "http://localhost:3007/search",
+      "check": {
+        "bodyLength": 793,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      },
+      "screenshot": "qa/canonical-v1/1024-search.png"
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/",
+      "check": {
+        "bodyLength": 809,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-home.png"
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/rankings",
+      "check": {
+        "bodyLength": 969,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-rankings.png"
+    },
+    {
+      "route": "clip-landscape",
+      "path": "/clips/echoes-of-tomorrow",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/clips/echoes-of-tomorrow",
+      "check": {
+        "bodyLength": 581,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-clip-landscape.png"
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/clips/last-horizon",
+      "check": {
+        "bodyLength": 574,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-clip-portrait.png"
+    },
+    {
+      "route": "creators",
+      "path": "/creators",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/creators",
+      "check": {
+        "bodyLength": 1037,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-creators.png"
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/creators/adara-voss",
+      "check": {
+        "bodyLength": 798,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-creator-profile.png"
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/submit",
+      "check": {
+        "bodyLength": 850,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-submit.png"
+    },
+    {
+      "route": "saved",
+      "path": "/saved",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/saved",
+      "check": {
+        "bodyLength": 403,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-saved.png"
+    },
+    {
+      "route": "saved-prompts",
+      "path": "/saved/prompts",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/saved/prompts",
+      "check": {
+        "bodyLength": 1192,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-saved-prompts.png"
+    },
+    {
+      "route": "activity",
+      "path": "/activity",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/activity",
+      "check": {
+        "bodyLength": 553,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-activity.png"
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/profile",
+      "check": {
+        "bodyLength": 833,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-profile.png"
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "url": "http://localhost:3007/search",
+      "check": {
+        "bodyLength": 736,
+        "brokenImages": [],
+        "looksLike404": false,
+        "mainCount": 1,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      },
+      "screenshot": "qa/canonical-v1/390-search.png"
+    }
+  ]
+}

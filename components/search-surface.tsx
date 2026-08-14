@@ -22,6 +22,7 @@ export function SearchSurface() {
   useEffect(() => {
     inputRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.target === inputRef.current) return;
       if (event.key === "Escape") { event.preventDefault(); router.push("/"); window.setTimeout(() => document.querySelector<HTMLElement>("[aria-label='Open search']")?.focus(), 50); }
       if (event.key === "ArrowDown") { event.preventDefault(); setHighlight((value) => Math.min(value + 1, resultLinks.length - 1)); }
       if (event.key === "ArrowUp") { event.preventDefault(); setHighlight((value) => Math.max(value - 1, 0)); }

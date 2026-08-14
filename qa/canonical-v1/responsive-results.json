@@ -1,0 +1,1922 @@
+{
+  "capturedAt": "2026-08-14",
+  "baseUrl": "http://localhost:3007",
+  "viewports": [
+    [
+      1920,
+      900,
+      "desktop"
+    ],
+    [
+      1728,
+      900,
+      "desktop"
+    ],
+    [
+      1600,
+      900,
+      "desktop"
+    ],
+    [
+      1536,
+      900,
+      "desktop"
+    ],
+    [
+      1440,
+      900,
+      "desktop"
+    ],
+    [
+      1366,
+      900,
+      "desktop"
+    ],
+    [
+      1280,
+      900,
+      "desktop"
+    ],
+    [
+      1024,
+      1180,
+      "tablet"
+    ],
+    [
+      834,
+      1112,
+      "tablet"
+    ],
+    [
+      820,
+      1180,
+      "tablet"
+    ],
+    [
+      768,
+      1024,
+      "tablet"
+    ],
+    [
+      430,
+      844,
+      "mobile"
+    ],
+    [
+      412,
+      844,
+      "mobile"
+    ],
+    [
+      393,
+      844,
+      "mobile"
+    ],
+    [
+      390,
+      844,
+      "mobile"
+    ],
+    [
+      375,
+      812,
+      "mobile"
+    ],
+    [
+      360,
+      800,
+      "mobile"
+    ]
+  ],
+  "routes": [
+    [
+      "home",
+      "/",
+      "LIVE",
+      "Rising now"
+    ],
+    [
+      "rankings",
+      "/rankings",
+      "Apply Filters",
+      "CATEGORY"
+    ],
+    [
+      "clip-portrait",
+      "/clips/last-horizon",
+      "Copy Prompt",
+      "Tools & settings"
+    ],
+    [
+      "creator-profile",
+      "/creators/adara-voss",
+      "Featured Work",
+      "Workflow"
+    ],
+    [
+      "submit",
+      "/submit",
+      "Submit your clip",
+      "Preview"
+    ],
+    [
+      "profile",
+      "/profile",
+      "Recently Saved",
+      "Prompt Library"
+    ],
+    [
+      "search",
+      "/search",
+      "SEARCH HOTRANK",
+      "ALL RESULTS"
+    ]
+  ],
+  "results": [
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1920,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1920,
+        "viewport": 1920
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1920,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1920,
+        "viewport": 1920
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1920,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1920,
+        "viewport": 1920
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1920,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1920,
+        "viewport": 1920
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1920,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1920,
+        "viewport": 1920
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1920,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1920,
+        "viewport": 1920
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1920,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1920,
+        "viewport": 1920
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1728,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1728,
+        "viewport": 1728
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1728,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1728,
+        "viewport": 1728
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1728,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1728,
+        "viewport": 1728
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1728,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1728,
+        "viewport": 1728
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1728,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1728,
+        "viewport": 1728
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1728,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1728,
+        "viewport": 1728
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1728,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1728,
+        "viewport": 1728
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1600,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1600,
+        "viewport": 1600
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1600,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1600,
+        "viewport": 1600
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1600,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1600,
+        "viewport": 1600
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1600,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1600,
+        "viewport": 1600
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1600,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1600,
+        "viewport": 1600
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1600,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1600,
+        "viewport": 1600
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1600,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1600,
+        "viewport": 1600
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1536,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1536,
+        "viewport": 1536
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1536,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1536,
+        "viewport": 1536
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1536,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1536,
+        "viewport": 1536
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1536,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1536,
+        "viewport": 1536
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1536,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1536,
+        "viewport": 1536
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1536,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1536,
+        "viewport": 1536
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1536,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1536,
+        "viewport": 1536
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1440,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1366,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1366,
+        "viewport": 1366
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1366,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1366,
+        "viewport": 1366
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1366,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1366,
+        "viewport": 1366
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1366,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1366,
+        "viewport": 1366
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1366,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1366,
+        "viewport": 1366
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1366,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1366,
+        "viewport": 1366
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1366,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1366,
+        "viewport": 1366
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1280,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1280,
+        "viewport": 1280
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1280,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1280,
+        "viewport": 1280
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1280,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1280,
+        "viewport": 1280
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1280,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1280,
+        "viewport": 1280
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1280,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1280,
+        "viewport": 1280
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1280,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1280,
+        "viewport": 1280
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1280,
+      "height": 900,
+      "viewport": "desktop",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1280,
+        "viewport": 1280
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 1024,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 834,
+      "height": 1112,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 834,
+        "viewport": 834
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 834,
+      "height": 1112,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 834,
+        "viewport": 834
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 834,
+      "height": 1112,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 834,
+        "viewport": 834
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 834,
+      "height": 1112,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 834,
+        "viewport": 834
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 834,
+      "height": 1112,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 834,
+        "viewport": 834
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 834,
+      "height": 1112,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 834,
+        "viewport": 834
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 834,
+      "height": 1112,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 834,
+        "viewport": 834
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 820,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 820,
+        "viewport": 820
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 820,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 820,
+        "viewport": 820
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 820,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 820,
+        "viewport": 820
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 820,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 820,
+        "viewport": 820
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 820,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 820,
+        "viewport": 820
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 820,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 820,
+        "viewport": 820
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 820,
+      "height": 1180,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 820,
+        "viewport": 820
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 768,
+      "height": 1024,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 768,
+      "height": 1024,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 768,
+      "height": 1024,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 768,
+      "height": 1024,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 768,
+      "height": 1024,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 768,
+      "height": 1024,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 768,
+      "height": 1024,
+      "viewport": "tablet",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 430,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 430,
+        "viewport": 430
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 430,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 430,
+        "viewport": 430
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 430,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 430,
+        "viewport": 430
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 430,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 430,
+        "viewport": 430
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 430,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 430,
+        "viewport": 430
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 430,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 430,
+        "viewport": 430
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 430,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 430,
+        "viewport": 430
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 412,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 412,
+        "viewport": 412
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 412,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 412,
+        "viewport": 412
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 412,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 412,
+        "viewport": 412
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 412,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 412,
+        "viewport": 412
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 412,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 412,
+        "viewport": 412
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 412,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 412,
+        "viewport": 412
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 412,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 412,
+        "viewport": 412
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 393,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 393,
+        "viewport": 393
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 393,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 393,
+        "viewport": 393
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 393,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 393,
+        "viewport": 393
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 393,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 393,
+        "viewport": 393
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 393,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 393,
+        "viewport": 393
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 393,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 393,
+        "viewport": 393
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 393,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 393,
+        "viewport": 393
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 390,
+      "height": 844,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 375,
+      "height": 812,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 375,
+      "height": 812,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 375,
+      "height": 812,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 375,
+      "height": 812,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 375,
+      "height": 812,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 375,
+      "height": 812,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 375,
+      "height": 812,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "route": "home",
+      "path": "/",
+      "width": 360,
+      "height": 800,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 360,
+        "viewport": 360
+      }
+    },
+    {
+      "route": "rankings",
+      "path": "/rankings",
+      "width": 360,
+      "height": 800,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 360,
+        "viewport": 360
+      }
+    },
+    {
+      "route": "clip-portrait",
+      "path": "/clips/last-horizon",
+      "width": 360,
+      "height": 800,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 360,
+        "viewport": 360
+      }
+    },
+    {
+      "route": "creator-profile",
+      "path": "/creators/adara-voss",
+      "width": 360,
+      "height": 800,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 360,
+        "viewport": 360
+      }
+    },
+    {
+      "route": "submit",
+      "path": "/submit",
+      "width": 360,
+      "height": 800,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 360,
+        "viewport": 360
+      }
+    },
+    {
+      "route": "profile",
+      "path": "/profile",
+      "width": 360,
+      "height": 800,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 360,
+        "viewport": 360
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "width": 360,
+      "height": 800,
+      "viewport": "mobile",
+      "check": {
+        "brokenImages": [],
+        "contentPresent": true,
+        "overflow": false,
+        "overlay": false,
+        "scrollWidth": 360,
+        "viewport": 360
+      }
+    }
+  ]
+}

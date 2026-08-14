@@ -1,0 +1,184 @@
+{
+  "capturedAt": "2026-08-14",
+  "before": {
+    "viewport": "768x1024",
+    "scrollWidth": 810
+  },
+  "after": [
+    {
+      "width": 1920,
+      "height": 900,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 1920,
+        "viewport": 1920
+      }
+    },
+    {
+      "width": 1728,
+      "height": 900,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 1728,
+        "viewport": 1728
+      }
+    },
+    {
+      "width": 1600,
+      "height": 900,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 1600,
+        "viewport": 1600
+      }
+    },
+    {
+      "width": 1536,
+      "height": 900,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 1536,
+        "viewport": 1536
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "width": 1366,
+      "height": 900,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 1366,
+        "viewport": 1366
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 1280,
+        "viewport": 1280
+      }
+    },
+    {
+      "width": 1024,
+      "height": 1180,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "width": 834,
+      "height": 1112,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 834,
+        "viewport": 834
+      }
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 820,
+        "viewport": 820
+      }
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 430,
+        "viewport": 430
+      }
+    },
+    {
+      "width": 412,
+      "height": 844,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 412,
+        "viewport": 412
+      }
+    },
+    {
+      "width": 393,
+      "height": 844,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 393,
+        "viewport": 393
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "check": {
+        "brokenImages": [],
+        "overflow": false,
+        "scrollWidth": 360,
+        "viewport": 360
+      }
+    }
+  ],
+  "defectScreenshots": [
+    "qa/canonical-v1/defects/profile-768-before.png",
+    "qa/canonical-v1/defects/profile-768-after.png",
+    "qa/canonical-v1/defects/profile-390-after.png"
+  ]
+}
