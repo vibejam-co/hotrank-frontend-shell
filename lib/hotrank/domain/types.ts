@@ -57,7 +57,7 @@ export interface Clip {
   relatedPosters?: string[];
   tools?: string[];
   workflow?: string[];
-  workflowText?: string;
+  workflowLines?: string[];
   breakdown?: Array<{label: string; value: string}>;
 }
 

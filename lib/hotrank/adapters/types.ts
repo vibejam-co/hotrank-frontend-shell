@@ -9,6 +9,7 @@ import type {
   SearchData,
   SubmissionFlowData,
   Clip,
+  UserProfile,
 } from "@/lib/hotrank/domain/types";
 
 /**
@@ -22,9 +23,9 @@ export interface HotRankDataAdapter {
   getRankings(): RankingsData;
   getClipDetail(id: string, expanded: boolean): Clip;
   getCreators(): CreatorDirectoryData;
-  getCreator(slug: string): CreatorProfileData;
+  getCreator(slug: string): CreatorProfileData | null;
   getActivity(): ActivityData;
-  getProfile(): import("@/lib/hotrank/domain/types").UserProfile;
+  getProfile(): UserProfile;
   getSaved(): SavedData;
   getSavedPrompts(): SavedPromptsData;
   getSearch(): SearchData;

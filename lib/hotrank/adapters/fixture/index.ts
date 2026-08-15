@@ -5,7 +5,7 @@ import {
   demoVideo,
   imgs,
   savedClips as savedClipRows,
-} from "@/lib/data";
+} from "../../../data";
 import type {HotRankDataAdapter} from "@/lib/hotrank/adapters/types";
 import type {
   ActivityData,
@@ -15,6 +15,7 @@ import type {
   CreatorDirectoryData,
   CreatorProfileData,
   HomeData,
+  MediaRatio,
   Movement,
   Prompt,
   RankingEntry,
@@ -44,6 +45,18 @@ function creator(name: string, avatar: string, followersLabel = "412K Followers"
 const creatorFixtures = creatorRows.map((row) => creator(row[0], row[1], row[2]));
 const creatorByName = (name: string, avatar = imgs.avatar) => creatorCache.get(name) || creator(name, avatar);
 
+const mediaRatio = (value: string): MediaRatio => {
+  switch (value) {
+    case "9:16": return "9:16";
+    case "4:5": return "4:5";
+    case "1:1": return "1:1";
+    case "16:9": return "16:9";
+    case "2:1": return "2:1";
+    case "2.39:1": return "2.39:1";
+    default: throw new Error(`Unsupported HotRank media ratio: ${value}`);
+  }
+};
+
 function clipFromRow(row: string[], index: number): Clip {
   const [title, poster, creatorName, heat, movementLabel, ratio] = row;
   const item: Clip = {
@@ -51,7 +64,7 @@ function clipFromRow(row: string[], index: number): Clip {
     slug: slugify(title),
     title,
     poster,
-    ratio: ratio as Clip["ratio"],
+    ratio: mediaRatio(ratio),
     creator: creatorByName(creatorName, poster),
     heat,
     movement: movement(movementLabel),
@@ -82,7 +95,7 @@ const collection = (id: string, title: string, image: string, count: number): Co
 const savedCollections = [collection("collection-cinematic-concepts", "Cinematic Concepts", imgs.neon, 36), collection("collection-visual-storytelling", "Visual Storytelling", imgs.city, 45), collection("collection-moodboard-inspo", "Moodboard Inspo", imgs.mountain, 54)];
 
 const home: HomeData = {
-  hero: {...clipFixtures[0], poster: canonicalHero, video: demoVideo},
+  hero: {...clipFixtures[0], poster: canonicalHero, video: demoVideo, ratio: "2.39:1"},
   liveRankings: clipFixtures.slice(1),
   risingNow: clipFixtures.slice(1),
   editorPicks: [clipFixtures[0], cityOfReflections, builtToFly, deepBelow, goldenHour],
@@ -181,7 +194,7 @@ const submission: SubmissionFlowData = {
 const clipDetails = {
   base: {...clipByTitle("Where the Wild Still Lives"), title: "Echoes of Tomorrow", description: "A lone signal. A distant world. The future is listening.", poster: imgs.clipLandscape, ratio: "16:9" as const, creator: creator("Aurora Studios", imgs.avatar, "24.1K followers"), heat: "92", movement: movement("↗ 5"), rankLabel: "# 12", viewsLabel: "128.7K", likesLabel: "9.3K", prompt: prompt("prompt-echoes", "Echoes of Tomorrow", basePrompt, imgs.clipLandscape), tags: ["#scifi", "#cinematic", "#unrealengine", "#ai"], relatedPosters: [imgs.clipLandscape, imgs.portrait, imgs.mountain, imgs.forest, imgs.neon], tools: ["Midjourney v6.1", "Runway Gen-3", "Topaz Video AI", "Color grade", "35mm lens"], workflow: ["Generate", "Animate", "Enhance", "Color Grade"], breakdown: [{label: "Subject", value: "Lone woman in dark coat"}, {label: "Setting", value: "Rainy cyberpunk city"}, {label: "Lighting", value: "Neon signs, reflections"}, {label: "Mood", value: "Moody, noir, cinematic"}, {label: "Camera", value: "35mm lens, shallow DOF"}]},
   expanded: {...clipByTitle("After Midnight"), title: "Neon Rain", description: "A lone figure walks through a rain-soaked city where every reflection hides a memory.", poster: imgs.city, ratio: "16:9" as const, creator: creator("Aurora Studios", imgs.avatar, "24.1K followers"), heat: "92", movement: movement("↗ 5"), rankLabel: "# 12", viewsLabel: "128.7K", likesLabel: "9.3K", prompt: prompt("prompt-neon-rain", "Expanded prompt", neonPrompt, imgs.city, ["#noir", "#rain", "#cinematic", "#neon"]), tags: ["#noir", "#rain", "#cinematic", "#neon"], relatedPosters: [imgs.city, imgs.portrait, imgs.mountain, imgs.forest, imgs.neon], tools: ["Midjourney v6.1", "Runway Gen-3", "Topaz Video AI", "Color grade", "35mm lens"], workflow: ["Generate", "Animate", "Enhance", "Color Grade"], breakdown: [{label: "Subject", value: "Lone woman in dark coat"}, {label: "Setting", value: "Rainy cyberpunk city"}, {label: "Lighting", value: "Neon signs, reflections"}, {label: "Mood", value: "Moody, noir, cinematic"}, {label: "Camera", value: "35mm lens, shallow DOF"}]},
-  portrait: {...clipByTitle("The Long Way Down"), title: "Copy Prompt", description: "Posted 2 days ago　·　◉ 312K views　·　9:16　·　15s", poster: imgs.clipPortrait, ratio: "9:16" as const, creator: creator("Orion Vale", imgs.avatar, "128K followers"), heat: "92", movement: movement("↗ +7"), rankLabel: "#4", viewsLabel: "312K", likesLabel: "1.8K", prompt: prompt("prompt-portrait", "Copy Prompt", basePrompt, imgs.clipPortrait), tags: ["Midjourney v6.1", "Runway Gen-3", "Upscale", "16:9 → 9:16", "15s", "24fps"], relatedPosters: [imgs.clipPortrait, imgs.portrait, imgs.mountain, imgs.forest, imgs.neon], workflowText: "① Midjourney v6.1 — Scene generation\n② Runway Gen-3 — Cinematic motion\n③ Topaz Video AI — Upscale & clarity\n④ Color grade & final export"},
+  portrait: {...clipByTitle("The Long Way Down"), title: "Copy Prompt", description: "Posted 2 days ago　·　◉ 312K views　·　9:16　·　15s", poster: imgs.clipPortrait, ratio: "9:16" as const, creator: creator("Orion Vale", imgs.avatar, "128K followers"), heat: "92", movement: movement("↗ +7"), rankLabel: "#4", viewsLabel: "312K", likesLabel: "1.8K", prompt: prompt("prompt-portrait", "Copy Prompt", basePrompt, imgs.clipPortrait), tags: ["Midjourney v6.1", "Runway Gen-3", "Upscale", "16:9 → 9:16", "15s", "24fps"], relatedPosters: [imgs.clipPortrait, imgs.portrait, imgs.mountain, imgs.forest, imgs.neon], workflowLines: ["① Midjourney v6.1 — Scene generation", "② Runway Gen-3 — Cinematic motion", "③ Topaz Video AI — Upscale & clarity", "④ Color grade & final export"]},
 };
 
 function getClipDetail(id: string, expanded: boolean): Clip {
@@ -194,7 +207,7 @@ export const fixtureAdapter: HotRankDataAdapter = {
   getRankings: () => rankings,
   getClipDetail,
   getCreators: () => creatorDirectory,
-  getCreator: () => creatorProfile,
+  getCreator: (slug) => creatorProfile.creator.slug === slug ? creatorProfile : null,
   getActivity: () => activity,
   getProfile: () => profile,
   getSaved: () => saved,
