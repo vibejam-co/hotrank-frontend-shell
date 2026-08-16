@@ -45,8 +45,16 @@ function relativeSourcePath(path) {
   return normalize(relative(root, path));
 }
 
+function canonicalModulePath(path) {
+  const normalizedPath = normalize(path).replaceAll("\\", "/");
+  const extension = extname(normalizedPath).toLowerCase();
+  return sourceExtensions.includes(extension)
+    ? normalizedPath.slice(0, -extension.length)
+    : normalizedPath;
+}
+
 function categoryFor(specifier, resolvedPath) {
-  const value = `${specifier} ${resolvedPath ? relativeSourcePath(resolvedPath) : ""}`.toLowerCase();
+  const value = `${canonicalModulePath(specifier)} ${resolvedPath ? canonicalModulePath(relativeSourcePath(resolvedPath)) : ""}`.toLowerCase();
   if (/(?:@supabase|supabase|service[-_ ]role|webhook)/.test(value)) return "supabase/privileged";
   if (/(?:stripe|dodo|payment)/.test(value)) return "payment";
   if (/(?:^|[\\/])(?:data|legacy|backend|database|db|schema|generated|api|server)(?:[\\/]|$)/.test(value) || value.includes("hotrank-backend") || value.includes("hotrank-frontend")) return "legacy/database";
@@ -153,6 +161,12 @@ function assertGraphViolation(name, entries, expectedCategory) {
   assert.equal(findings.some((finding) => finding.chain?.length > 2), true, `${name} did not report a dependency chain`);
 }
 
+function assertDirectViolation(name, entries, expectedCategory) {
+  const sourcePath = "app/example.tsx";
+  const findings = scanSource(entries[sourcePath], sourcePath, "presentation", virtualSources(entries)).imports;
+  assert.equal(findings.some((finding) => finding.category === expectedCategory), true, `${name} was not detected`);
+}
+
 assertGraphViolation("single re-export negative", {
   "app/example.tsx": 'import {client} from "../lib/safe-barrel";',
   "lib/safe-barrel.ts": 'export * from "./supabase/client";',
@@ -181,12 +195,56 @@ assertGraphViolation("cyclic graph negative", {
   "lib/cycle-c.ts": 'export {a} from "./cycle-a"; export {client} from "./backend/client";',
   "lib/backend/client.ts": "export const client = {};",
 }, "legacy/database");
+assertDirectViolation("relative explicit backend negative", {
+  "app/example.tsx": 'import client from "../lib/backend.ts";',
+  "lib/backend.ts": "export const client = {};",
+}, "legacy/database");
+assertDirectViolation("relative explicit data negative", {
+  "app/example.tsx": 'import rows from "../lib/data.ts";',
+  "lib/data.ts": "export default [];",
+}, "legacy/database");
+assertDirectViolation("alias explicit backend negative", {
+  "app/example.tsx": 'import client from "@/lib/backend.ts";',
+  "lib/backend.ts": "export const client = {};",
+}, "legacy/database");
+assertDirectViolation("alias explicit data negative", {
+  "app/example.tsx": 'import rows from "@/lib/data.ts";',
+  "lib/data.ts": "export default [];",
+}, "legacy/database");
+assertGraphViolation("explicit star re-export negative", {
+  "app/example.tsx": 'import {client} from "../lib/safe-barrel";',
+  "lib/safe-barrel.ts": 'export * from "./backend.ts";',
+  "lib/backend.ts": "export const client = {};",
+}, "legacy/database");
+assertGraphViolation("explicit named re-export negative", {
+  "app/example.tsx": 'import {client} from "../lib/safe-barrel";',
+  "lib/safe-barrel.ts": 'export {client} from "./backend.ts";',
+  "lib/backend.ts": "export const client = {};",
+}, "legacy/database");
+assertGraphViolation("explicit multi-hop negative", {
+  "app/example.tsx": 'import {run} from "../lib/safe-a.ts";',
+  "lib/safe-a.ts": 'export {run} from "./safe-b.ts";',
+  "lib/safe-b.ts": 'export {run} from "./backend.ts";',
+  "lib/backend.ts": "export const run = () => {};",
+}, "legacy/database");
+assertGraphViolation("explicit alias multi-hop negative", {
+  "app/example.tsx": 'import {run} from "@/lib/safe-a.ts";',
+  "lib/safe-a.ts": 'export {run} from "@/lib/safe-b.ts";',
+  "lib/safe-b.ts": 'export {run} from "@/lib/backend.ts";',
+  "lib/backend.ts": "export const run = () => {};",
+}, "legacy/database");
+for (const extension of sourceExtensions) {
+  assertDirectViolation(`explicit ${extension} extension negative`, {
+    "app/example.tsx": `import client from "../lib/backend${extension}";`,
+    [`lib/backend${extension}`]: "export const client = {};",
+  }, "legacy/database");
+}
 
 const cleanGraph = virtualSources({
-  "app/example.tsx": 'import {getHomeData} from "@/lib/hotrank/services/index";',
-  "lib/hotrank/services/index.ts": 'import {fixtureAdapter} from "@/lib/hotrank/adapters/fixture"; export const getHomeData = () => fixtureAdapter.getHome();',
-  "lib/hotrank/adapters/fixture/index.ts": 'import {rows} from "../../../data"; import type {HotRankDataAdapter} from "../types"; export const fixtureAdapter = {getHome: () => rows} as HotRankDataAdapter;',
-  "lib/hotrank/adapters/types.ts": 'import type {HomeData} from "@/lib/hotrank/domain/types"; export interface HotRankDataAdapter {getHome(): HomeData;}',
+  "app/example.tsx": 'import {getHomeData} from "@/lib/hotrank/services/index.ts";',
+  "lib/hotrank/services/index.ts": 'import {fixtureAdapter} from "@/lib/hotrank/adapters/fixture/index.ts"; export const getHomeData = () => fixtureAdapter.getHome();',
+  "lib/hotrank/adapters/fixture/index.ts": 'import {rows} from "../../../data.ts"; import type {HotRankDataAdapter} from "../types.ts"; export const fixtureAdapter = {getHome: () => rows} as HotRankDataAdapter;',
+  "lib/hotrank/adapters/types.ts": 'import type {HomeData} from "@/lib/hotrank/domain/types.ts"; export interface HotRankDataAdapter {getHome(): HomeData;}',
   "lib/hotrank/domain/types.ts": "export type HomeData = {hero: string};",
   "lib/data.ts": "export const rows = [];",
 });
