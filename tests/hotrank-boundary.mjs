@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import {existsSync, readdirSync, readFileSync} from "node:fs";
+import {existsSync, readdirSync, readFileSync, statSync} from "node:fs";
 import {dirname, extname, join, normalize, relative, resolve} from "node:path";
 
 const root = resolve(new URL("../", import.meta.url).pathname);
@@ -26,11 +26,19 @@ function importedSpecifiers(source) {
   return specifiers;
 }
 
-function resolveImport(specifier, sourcePath) {
+function sourceExists(path, virtualSources) {
+  return (existsSync(path) && statSync(path).isFile()) || virtualSources?.has(relativeSourcePath(path));
+}
+
+function sourceText(path, virtualSources) {
+  return virtualSources?.get(relativeSourcePath(path)) ?? read(relativeSourcePath(path));
+}
+
+function resolveImport(specifier, sourcePath, virtualSources) {
   if (!specifier.startsWith(".") && !specifier.startsWith("@/")) return null;
   const base = specifier.startsWith("@/") ? join(root, specifier.slice(2)) : resolve(dirname(join(root, sourcePath)), specifier);
   const candidates = [base, ...sourceExtensions.map((extension) => `${base}${extension}`), ...sourceExtensions.map((extension) => join(base, `index${extension}`))];
-  return candidates.find((candidate) => existsSync(candidate)) || null;
+  return candidates.find((candidate) => sourceExists(candidate, virtualSources)) || null;
 }
 
 function relativeSourcePath(path) {
@@ -46,15 +54,41 @@ function categoryFor(specifier, resolvedPath) {
   return null;
 }
 
-function scanImports(source, sourcePath, boundary) {
-  return importedSpecifiers(source).flatMap((specifier) => {
-    const resolvedPath = resolveImport(specifier, sourcePath);
-    const category = categoryFor(specifier, resolvedPath);
-    const forbidden = boundary === "presentation"
-      ? ["supabase/privileged", "payment", "legacy/database"]
-      : ["presentation"];
-    return category && forbidden.includes(category) ? [{specifier, resolvedPath, category}] : [];
-  });
+function approvedFixtureDataEdge(sourcePath, resolvedPath) {
+  return sourcePath.startsWith("lib/hotrank/adapters/fixture/") && relativeSourcePath(resolvedPath) === "lib/data.ts";
+}
+
+function scanImports(source, sourcePath, boundary, virtualSources) {
+  const forbidden = boundary === "presentation"
+    ? ["supabase/privileged", "payment", "legacy/database"]
+    : ["presentation"];
+  const findings = [];
+  const visited = new Set();
+  const visiting = new Set();
+
+  function walk(currentSource, currentPath, chain) {
+    const normalizedPath = normalize(currentPath);
+    if (visiting.has(normalizedPath) || visited.has(normalizedPath)) return;
+    visiting.add(normalizedPath);
+    for (const specifier of importedSpecifiers(currentSource)) {
+      const resolvedPath = resolveImport(specifier, normalizedPath, virtualSources);
+      const resolvedSourcePath = resolvedPath ? relativeSourcePath(resolvedPath) : null;
+      const category = resolvedPath && approvedFixtureDataEdge(normalizedPath, resolvedPath)
+        ? null
+        : categoryFor(specifier, resolvedPath);
+      const nextChain = [...chain, normalizedPath, resolvedSourcePath || specifier];
+      if (category && forbidden.includes(category)) {
+        findings.push({specifier, resolvedPath, category, chain: nextChain});
+        continue;
+      }
+      if (resolvedPath) walk(sourceText(resolvedPath, virtualSources), resolvedSourcePath, nextChain);
+    }
+    visiting.delete(normalizedPath);
+    visited.add(normalizedPath);
+  }
+
+  walk(source, sourcePath, []);
+  return findings;
 }
 
 function stripComments(source) {
@@ -76,8 +110,8 @@ function rowLeakages(source) {
   return findings;
 }
 
-function scanSource(source, sourcePath, boundary) {
-  return {imports: scanImports(source, sourcePath, boundary), rows: rowLeakages(source)};
+function scanSource(source, sourcePath, boundary, virtualSources) {
+  return {imports: scanImports(source, sourcePath, boundary, virtualSources), rows: rowLeakages(source)};
 }
 
 const presentationFiles = [...filesUnder("app"), ...filesUnder("components")];
@@ -107,6 +141,56 @@ for (const [name, path, source, expected] of negativeCases) {
   const findings = scanSource(source, path, path.startsWith("lib/") ? "domain" : "presentation").imports;
   assert.equal(findings.some((finding) => finding.category === expected), true, `${name} bypass was not detected`);
 }
+
+function virtualSources(entries) {
+  return new Map(Object.entries(entries));
+}
+
+function assertGraphViolation(name, entries, expectedCategory) {
+  const sourcePath = "app/example.tsx";
+  const findings = scanSource(entries[sourcePath], sourcePath, "presentation", virtualSources(entries)).imports;
+  assert.equal(findings.some((finding) => finding.category === expectedCategory), true, `${name} was not detected`);
+  assert.equal(findings.some((finding) => finding.chain?.length > 2), true, `${name} did not report a dependency chain`);
+}
+
+assertGraphViolation("single re-export negative", {
+  "app/example.tsx": 'import {client} from "../lib/safe-barrel";',
+  "lib/safe-barrel.ts": 'export * from "./supabase/client";',
+  "lib/supabase/client.ts": "export const client = {};",
+}, "supabase/privileged");
+assertGraphViolation("multi-hop transitive negative", {
+  "app/example.tsx": 'import {run} from "../lib/helper-a";',
+  "lib/helper-a.ts": 'export {run} from "./helper-b";',
+  "lib/helper-b.ts": 'export {run} from "./payments/server";',
+  "lib/payments/server.ts": "export const run = () => {};",
+}, "payment");
+assertGraphViolation("alias re-export negative", {
+  "app/example.tsx": 'import {client} from "@/lib/safe";',
+  "lib/safe.ts": 'export * from "@/lib/backend/client";',
+  "lib/backend/client.ts": "export const client = {};",
+}, "legacy/database");
+assertGraphViolation("relative re-export negative", {
+  "app/example.tsx": 'import {client} from "../lib/safe";',
+  "lib/safe.ts": 'export {client} from "./backend/client";',
+  "lib/backend/client.ts": "export const client = {};",
+}, "legacy/database");
+assertGraphViolation("cyclic graph negative", {
+  "app/example.tsx": 'import {a} from "../lib/cycle-a";',
+  "lib/cycle-a.ts": 'export {b} from "./cycle-b";',
+  "lib/cycle-b.ts": 'export {c} from "./cycle-c";',
+  "lib/cycle-c.ts": 'export {a} from "./cycle-a"; export {client} from "./backend/client";',
+  "lib/backend/client.ts": "export const client = {};",
+}, "legacy/database");
+
+const cleanGraph = virtualSources({
+  "app/example.tsx": 'import {getHomeData} from "@/lib/hotrank/services/index";',
+  "lib/hotrank/services/index.ts": 'import {fixtureAdapter} from "@/lib/hotrank/adapters/fixture"; export const getHomeData = () => fixtureAdapter.getHome();',
+  "lib/hotrank/adapters/fixture/index.ts": 'import {rows} from "../../../data"; import type {HotRankDataAdapter} from "../types"; export const fixtureAdapter = {getHome: () => rows} as HotRankDataAdapter;',
+  "lib/hotrank/adapters/types.ts": 'import type {HomeData} from "@/lib/hotrank/domain/types"; export interface HotRankDataAdapter {getHome(): HomeData;}',
+  "lib/hotrank/domain/types.ts": "export type HomeData = {hero: string};",
+  "lib/data.ts": "export const rows = [];",
+});
+assert.deepEqual(scanSource(cleanGraph.get("app/example.tsx"), "app/example.tsx", "presentation", cleanGraph).imports, [], "clean multi-hop graph was rejected");
 assert.equal(rowLeakages("export interface ClipRow { id: string }" ).length > 0, true, "row declaration negative case was not detected");
 assert.equal(rowLeakages('import type { Database } from "@/lib/db/types"; export type Profile = Database["public"];').length > 0, true, "database import negative case was not detected");
 assert.equal(rowLeakages('import { ClipRow } from "@/lib/query/types";').length > 0, true, "ordinary row import negative case was not detected");
