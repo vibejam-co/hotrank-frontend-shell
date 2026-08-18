@@ -1,0 +1,196 @@
+{
+  "phase": "3A-1",
+  "scope": "read-only remote Supabase forensics",
+  "project": {
+    "name": "HOTRANK",
+    "ref": "csuejshnycgbfvtjbxoq",
+    "url": "https://csuejshnycgbfvtjbxoq.supabase.co",
+    "organization_id": "oswgjjphugeqvilmmupn",
+    "organization_name": "HotRank AI",
+    "region": "eu-west-1",
+    "region_label": "West EU (Ireland)",
+    "status": "ACTIVE_HEALTHY",
+    "identity": "MATCH"
+  },
+  "access": {
+    "token_available": true,
+    "credential_source": "inherited SUPABASE_ACCESS_TOKEN only",
+    "default_or_wizup_credentials_used": false,
+    "remote_writes": false,
+    "private_rows_exported": false,
+    "secret_values_exposed": false
+  },
+  "local_state": {
+    "repository": "/Users/Ira/Desktop/hotrank-frontend-final",
+    "branch": "main",
+    "starting_head": "91f7237b7c891462742cc5e7b3f8da160a06e5db",
+    "canonical_tag": "hotrank-frontend-v1-lock",
+    "canonical_tag_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa",
+    "canonical_repo_supabase_link": "NONE",
+    "preexisting_dirty_or_untracked_files_preserved": true
+  },
+  "local_expectation": {
+    "source": "/Users/Ira/Desktop/HOTRANK",
+    "tables": ["profiles", "submissions", "creators", "clips", "rankings", "follows", "ignites", "saves", "prompt_unlocks"],
+    "edge_functions": ["apify-webhook", "dodo-checkout", "dodo-webhook"],
+    "migration_count": 12,
+    "seed_present": true,
+    "seed_classification": "demo/placeholder evidence; not remote row evidence"
+  },
+  "remote_schema": {
+    "schemas_observed": ["auth", "extensions", "graphql", "graphql_public", "pgbouncer", "public", "realtime", "storage", "supabase_functions", "supabase_migrations", "vault"],
+    "public_tables": {
+      "clips": {
+        "rls_enabled": false,
+        "columns": ["id uuid PK", "creator_id uuid NOT NULL", "title text NOT NULL", "video_url text NOT NULL", "thumbnail_url text", "ai_score integer NOT NULL", "created_at timestamptz NOT NULL", "user_id uuid", "category text", "retention_rate numeric NOT NULL", "engagement_score numeric NOT NULL", "velocity_multiplier numeric NOT NULL", "view_count integer NOT NULL"],
+        "foreign_keys": ["creator_id -> creators.id", "user_id -> auth.users.id"],
+        "indexes": ["clips_pkey", "idx_clips_ai_score", "idx_clips_category", "idx_clips_creator_id", "idx_clips_user_id", "idx_clips_view_count"]
+      },
+      "creators": {
+        "rls_enabled": false,
+        "columns": ["id uuid PK", "username text NOT NULL UNIQUE", "avatar_url text", "badge_status text", "created_at timestamptz NOT NULL", "user_id uuid UNIQUE"],
+        "foreign_keys": ["user_id -> auth.users.id"],
+        "indexes": ["creators_pkey", "creators_user_id_key", "creators_username_key", "idx_creators_user_id"]
+      },
+      "follows": {
+        "rls_enabled": true,
+        "columns": ["follower_id uuid PK NOT NULL", "following_id uuid PK NOT NULL", "created_at timestamptz NOT NULL"],
+        "foreign_keys": ["follower_id -> auth.users.id", "following_id -> auth.users.id"],
+        "indexes": ["follows_pkey", "idx_follows_follower_id", "idx_follows_following_id"]
+      },
+      "ignites": {
+        "rls_enabled": true,
+        "columns": ["user_id uuid PK NOT NULL", "submission_id uuid PK NOT NULL", "created_at timestamptz NOT NULL"],
+        "foreign_keys": ["user_id -> auth.users.id", "submission_id -> submissions.id"],
+        "indexes": ["ignites_pkey", "idx_ignites_submission_id", "idx_ignites_user_id"]
+      },
+      "profiles": {
+        "rls_enabled": true,
+        "columns": ["id uuid PK -> auth.users.id", "username text", "avatar_url text", "created_at timestamptz NOT NULL", "display_name text", "handle text", "bio text", "links jsonb NOT NULL", "is_admin boolean NOT NULL"],
+        "indexes": ["profiles_pkey", "profiles_username_key", "idx_profiles_handle_lower"]
+      },
+      "prompt_unlocks": {
+        "rls_enabled": true,
+        "columns": ["user_id uuid PK NOT NULL", "submission_id uuid PK NOT NULL", "dodo_payment_id text", "amount_cents integer", "created_at timestamptz NOT NULL"],
+        "foreign_keys": ["user_id -> auth.users.id", "submission_id -> submissions.id"],
+        "indexes": ["prompt_unlocks_pkey", "idx_prompt_unlocks_submission", "idx_prompt_unlocks_user"]
+      },
+      "rankings": {
+        "rls_enabled": false,
+        "columns": ["id uuid PK", "clip_id uuid NOT NULL", "category text NOT NULL", "rank_position integer NOT NULL", "trend_direction text NOT NULL", "created_at timestamptz NOT NULL"],
+        "foreign_keys": ["clip_id -> clips.id"],
+        "indexes": ["rankings_pkey", "idx_rankings_category_rank", "idx_rankings_clip_id", "idx_rankings_clip_id_unique"]
+      },
+      "saves": {
+        "rls_enabled": true,
+        "columns": ["user_id uuid PK NOT NULL", "submission_id uuid PK NOT NULL", "created_at timestamptz NOT NULL"],
+        "foreign_keys": ["user_id -> auth.users.id", "submission_id -> submissions.id"],
+        "indexes": ["saves_pkey", "idx_saves_submission_id", "idx_saves_user_id"]
+      },
+      "submissions": {
+        "rls_enabled": true,
+        "columns": ["id uuid PK", "source_url text NOT NULL", "platform text NOT NULL", "external_content_id text", "embed_url text", "preview_thumbnail text", "creator_notes text", "submitter_id uuid", "status text NOT NULL", "created_at timestamptz NOT NULL", "title text", "creator_handle text", "canonical_url text", "prompt_text text", "prompt_visibility text NOT NULL", "prompt_price integer", "ai_stack jsonb NOT NULL", "workflow_notes text", "recipe_included boolean NOT NULL", "ai_stack_included boolean NOT NULL", "workflow_notes_included boolean NOT NULL"],
+        "foreign_keys": ["submitter_id -> auth.users.id"],
+        "indexes": ["submissions_pkey"]
+      }
+    },
+    "views": [],
+    "materialized_views": [],
+    "public_functions": [
+      {"identity": "handle_new_user()", "language": "plpgsql", "security_definer": true, "owner": "postgres", "search_path_settings_observed": null},
+      {"identity": "protect_submission_status()", "language": "plpgsql", "security_definer": true, "owner": "postgres", "search_path_settings_observed": null}
+    ],
+    "triggers": [
+      {"table": "auth.users", "name": "on_auth_user_created", "function": "handle_new_user()", "enabled": true},
+      {"table": "public.submissions", "name": "check_submission_status_change", "function": "protect_submission_status()", "enabled": true}
+    ]
+  },
+  "rls": {
+    "summary": {
+      "rls_on": ["follows", "ignites", "profiles", "prompt_unlocks", "saves", "submissions"],
+      "rls_off": ["clips", "creators", "rankings"],
+      "forced_rls": []
+    },
+    "policies": [
+      {"table": "profiles", "name": "Public profiles are viewable by everyone.", "command": "SELECT", "roles": ["PUBLIC"], "using": "true"},
+      {"table": "profiles", "name": "Users can insert their own profile.", "command": "INSERT", "roles": ["PUBLIC"], "with_check": "auth.uid() = id"},
+      {"table": "profiles", "name": "Users can update their own profile.", "command": "UPDATE", "roles": ["authenticated"], "using": "auth.uid() = id", "with_check": "auth.uid() = id"},
+      {"table": "submissions", "name": "Submissions are viewable by everyone.", "command": "SELECT", "roles": ["PUBLIC"], "using": "true"},
+      {"table": "submissions", "name": "Authenticated users can insert submissions.", "command": "INSERT", "roles": ["authenticated"], "with_check": "auth.uid() = submitter_id"},
+      {"table": "submissions", "name": "Users can update their own submissions.", "command": "UPDATE", "roles": ["authenticated"], "using": "auth.uid() = submitter_id", "with_check": null},
+      {"table": "submissions", "name": "Admins can update any submission.", "command": "UPDATE", "roles": ["authenticated"], "using": "EXISTS profiles where profiles.id = auth.uid() and profiles.is_admin = true", "with_check": null},
+      {"table": "submissions", "name": "Users can delete their own pending submissions.", "command": "DELETE", "roles": ["authenticated"], "using": "owner pending OR profiles.is_admin = true"},
+      {"table": "follows", "name": "Follows are viewable by everyone.", "command": "SELECT", "roles": ["PUBLIC"], "using": "true"},
+      {"table": "follows", "name": "Users can follow from their own profile.", "command": "INSERT", "roles": ["authenticated"], "with_check": "auth.uid() = follower_id"},
+      {"table": "follows", "name": "Users can unfollow from their own profile.", "command": "DELETE", "roles": ["authenticated"], "using": "auth.uid() = follower_id"},
+      {"table": "ignites", "name": "Ignites are viewable by everyone.", "command": "SELECT", "roles": ["PUBLIC"], "using": "true"},
+      {"table": "ignites", "name": "Users can ignite approved submissions.", "command": "INSERT", "roles": ["authenticated"], "with_check": "auth.uid() = user_id AND submission.status = approved"},
+      {"table": "ignites", "name": "Users can unignite their own reactions.", "command": "DELETE", "roles": ["authenticated"], "using": "auth.uid() = user_id"},
+      {"table": "saves", "name": "Saves are viewable by everyone.", "command": "SELECT", "roles": ["PUBLIC"], "using": "true"},
+      {"table": "saves", "name": "Users can save approved submissions.", "command": "INSERT", "roles": ["authenticated"], "with_check": "auth.uid() = user_id AND submission.status = approved"},
+      {"table": "saves", "name": "Users can unsave their own saves.", "command": "DELETE", "roles": ["authenticated"], "using": "auth.uid() = user_id"},
+      {"table": "prompt_unlocks", "name": "Users can view their own unlocks.", "command": "SELECT", "roles": ["PUBLIC"], "using": "auth.uid() = user_id"}
+    ]
+  },
+  "auth": {
+    "email_password": "enabled",
+    "google_oauth": "enabled",
+    "other_external_oauth_observed": "disabled/not observed",
+    "signup_disabled": false,
+    "phone_provider": "disabled",
+    "mfa_totp": "enabled",
+    "custom_oauth": "disabled",
+    "profile_bootstrap": "auth.users trigger on_auth_user_created -> public.handle_new_user()",
+    "role_propagation": "profiles.is_admin is a public-table column used by policies; protected app_metadata role was not observed",
+    "site_url": "configured; exact value intentionally omitted",
+    "redirect_assumptions": "legacy source uses local/internal redirect assumptions; remote allow-list value not recorded",
+    "session_architecture": "Supabase managed Auth; application cookie/session behavior requires adapter review"
+  },
+  "edge_functions": {
+    "deployed": [
+      {"name": "dodo-checkout", "status": "ACTIVE", "verify_jwt": true, "version": 8},
+      {"name": "dodo-webhook", "status": "ACTIVE", "verify_jwt": true, "version": 8}
+    ],
+    "expected_but_not_deployed": ["apify-webhook"],
+    "source_findings": {
+      "dodo-webhook": ["missing DODO_PAYMENTS_WEBHOOK_SECRET returns verified=true/mock=true", "signature check lacks timestamp age/replay/business-claim checks", "payment metadata drives prompt_unlocks service-role upsert"],
+      "dodo-checkout": ["missing DODO_PAYMENTS_SECRET_KEY returns mock success", "client supplies videoId and promptPriceCents", "test.dodopayments.com is hardcoded", "wildcard CORS", "customer identity is derived opportunistically"],
+      "apify-webhook": "not deployed; local source is placeholder/mock"
+    }
+  },
+  "migration_history": {
+    "remote_table": "supabase_migrations.schema_migrations",
+    "remote_applied": ["20240101000001_initial_schema", "20240101000002_clip_user_linkage", "20240101000003_ranking_ingestion", "20240424000000_init_submissions", "20260425000000_batch5_interactions", "20260425000001_batchA_metadata", "20260426000000_prompt_marketplace_foundation", "20260426000001_prompt_intent_flags", "20260426000002_profile_identity_layer", "20260426000003_phase5_rls", "20260428_moderation_controls", "20260501000000_prompt_unlocks"],
+    "local_count": 12,
+    "remote_count": 12,
+    "classification": "local and remote match; no ordering drift observed"
+  },
+  "data_presence": {
+    "aggregate_counts_only": true,
+    "counts": {"clips": 0, "creators": 0, "rankings": 0, "profiles": 9, "submissions": 8, "follows": 4, "ignites": 6, "saves": 3, "prompt_unlocks": 0, "storage_buckets": 0, "storage_objects": 0},
+    "classification": {"profiles": "B SYSTEM DATA / PRESERVE", "follows": "B SYSTEM DATA / PRESERVE", "ignites": "B SYSTEM DATA / PRESERVE", "saves": "B SYSTEM DATA / PRESERVE", "submissions": "D UNKNOWN / OWNER REVIEW; prompt-bearing and potentially sensitive", "clips": "D EMPTY", "creators": "D EMPTY", "rankings": "D EMPTY", "prompt_unlocks": "E SENSITIVE SYSTEM DATA / NEVER AUTO-DELETE", "storage": "D EMPTY"},
+    "demo_or_placeholder_classification": "not established from aggregate metadata; no purge permitted"
+  },
+  "storage": {"buckets": [], "objects_count": 0, "ownership_model": "no application bucket observed", "classification": "NOT IN USE / UNKNOWN FUTURE POLICY"},
+  "backup_recovery": {"physical_backups": [], "pitr_enabled": false, "walg_enabled": true, "status": "BACKUP NOT VERIFIED", "hard_gate": "NO REMOTE DATA PURGE UNTIL BACKUP/RECOVERY IS VERIFIED"},
+  "security_classification": {
+    "admin_escalation_p0": {"status": "CONFIRMED REMOTELY", "basis": "profiles.is_admin is client-writable through self-row UPDATE policy; admin policies trust it"},
+    "dodo_fail_open": {"status": "CONFIRMED", "basis": "deployed dodo-webhook source returns verified=true when webhook secret is absent"},
+    "p0": ["Remove client-writable privilege fields and move admin authority to protected claims/role records", "Make Dodo webhook fail closed and validate timestamp, replay, event, product, amount, ownership, and idempotency"],
+    "p1": ["Enable and design RLS for clips, creators, rankings; isolate ranking writes", "Remove broad public submission reads/private prompt exposure", "Constrain submission updates by immutable fields and server validation", "Move browser mutations behind server-side typed boundary", "Fix Dodo checkout identity/price/origin and webhook business claims", "Resolve active dodo-webhook verify_jwt/external webhook delivery contract", "Complete session refresh and deployment contract review"],
+    "p2": ["Pin search_path for security-definer functions", "Replace/secure placeholder Apify ingestion", "Remove mock success paths", "Define Storage ownership/media policy", "Add audit/ranking history where required"]
+  },
+  "canonical_domain_compatibility": {
+    "Clip": "ADAPT",
+    "Creator": "ADAPT",
+    "RankingEntry": "ADAPT",
+    "Prompt": "ADAPT",
+    "SavedItem": "ADAPT",
+    "Submission": "ADAPT",
+    "UserProfile": "ADAPT",
+    "ActivityItem": "NOT PRESENT"
+  },
+  "strategy": {"recommendation": "OPTION A — REPAIR EXISTING HOTRANK SUPABASE", "confidence": "MEDIUM", "reason": "Identity is exact, migration history matches all 12 local migrations, Auth/profile bootstrap exists, and preserving existing accounts is safer than an unverified replacement migration. Existing content projections are empty, but 9 profiles and 8 prompt-bearing submissions require owner review and backup before any purge. Do not connect the canonical frontend until the P0/P1 queue is closed."},
+  "phase_3b_repair_queue": ["1. Verify/export recovery and establish rollback gate", "2. Remove client-writable is_admin authority and add negative escalation tests", "3. Fail closed and harden Dodo webhook; reconcile verify_jwt delivery", "4. Enable/rewrite core RLS and protected server write paths", "5. Split safe public content from private prompt/moderation fields", "6. Harden submission ownership/status and ranking projection writes", "7. Replace checkout/webhook business-claim and replay gaps", "8. Define Storage/media and audit policy", "9. Run security/advisor/Invite-30 regression verification before connection"],
+  "limitations": ["No remote row contents were inspected", "No database backup was created or restored", "Exact Auth site URL and redirect allow-list values were not recorded", "No function was invoked", "No Vercel, DNS, deployment, or payment system was inspected"]
+}
