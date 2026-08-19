@@ -1,0 +1,160 @@
+{
+  "phase": "3B",
+  "project": {
+    "name": "HOTRANK",
+    "ref": "csuejshnycgbfvtjbxoq",
+    "organization": "HotRank AI",
+    "organization_id": "oswgjjphugeqvilmmupn",
+    "region": "eu-west-1",
+    "status": "ACTIVE_HEALTHY"
+  },
+  "starting_head": "2a805dcc9e5fa446ebe41c6f6ef7d1c1cd57ff7a",
+  "source_control": {
+    "final_head": "2a805dcc9e5fa446ebe41c6f6ef7d1c1cd57ff7a",
+    "checkpoint_commits": [],
+    "blocker": "Managed workspace denies writes to .git/index.lock."
+  },
+  "canonical_frontend_tag": {
+    "name": "hotrank-frontend-v1-lock",
+    "commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa"
+  },
+  "recovery": {
+    "physical_backups": 0,
+    "pitr_enabled": false,
+    "rollback_strategy": "No application rows were mutated. Revert the source-controlled SQL changes, restore prior function definitions from the protected pre-change bundle if ever needed, and reapply inverse privilege/view/function SQL.",
+    "protected_artifact": "private temporary storage outside Git; Dodo source bundles only, no row data",
+    "prechange_schema_fingerprint": "b36509ccaca6d6eefde113841057c162",
+    "limitations": [
+      "Supabase physical backup/PITR was unavailable.",
+      "No private row contents were exported or persisted.",
+      "The CLI database-password link path was unavailable; remote SQL was applied through the HOTRANK Management API with the inherited access token."
+    ]
+  },
+  "remote_counts_after": {
+    "profiles": 9,
+    "submissions": 8,
+    "creators": 0,
+    "clips": 0,
+    "rankings": 0,
+    "follows": 4,
+    "ignites": 6,
+    "saves": 3,
+    "prompt_unlocks": 0,
+    "storage_buckets": 0,
+    "storage_objects": 0
+  },
+  "migrations": [
+    "20260819050915_protect_admin_authority",
+    "20260819050916_isolate_public_data",
+    "20260819050917_establish_server_write_boundary",
+    "20260819050918_harden_database_functions",
+    "20260819051606_repair_public_view_acl",
+    "20260819052810_scope_public_interaction_aggregates"
+  ],
+  "rls": {
+    "enabled_and_forced": [
+      "profiles",
+      "submissions",
+      "creators",
+      "clips",
+      "rankings",
+      "follows",
+      "ignites",
+      "saves",
+      "prompt_unlocks"
+    ],
+    "base_policy_count": 0,
+    "base_table_browser_privileges": "none",
+    "safe_public_projections": [
+      "public_profiles",
+      "public_creators",
+      "public_clips",
+      "public_rankings",
+      "public_submissions",
+      "public_follow_counts",
+      "public_ignite_counts",
+      "public_save_counts"
+    ],
+    "safe_projection_browser_privileges": "SELECT only"
+  },
+  "admin_authority": {
+    "legacy_column_preserved": true,
+    "legacy_column_client_mutable": false,
+    "protected_source_of_truth": "private.admin_users",
+    "protected_admin_row_count": 1,
+    "admin_policies_trust_profiles_is_admin": false
+  },
+  "private_submission_fields_excluded_from_public_projection": [
+    "submitter_id",
+    "status",
+    "creator_notes",
+    "prompt_price",
+    "ai_stack",
+    "workflow_notes",
+    "payment_history",
+    "dodo_payment_id"
+  ],
+  "server_mutation_boundary": {
+    "rpc_functions": [
+      "hotrank_update_profile",
+      "hotrank_create_submission",
+      "hotrank_update_submission",
+      "hotrank_moderate_submission",
+      "hotrank_claim_creator",
+      "hotrank_save_submission",
+      "hotrank_remove_save",
+      "hotrank_follow_profile",
+      "hotrank_unfollow_profile",
+      "hotrank_add_ignite",
+      "hotrank_remove_ignite",
+      "hotrank_upsert_ranking",
+      "hotrank_delete_ranking",
+      "hotrank_grant_admin",
+      "hotrank_revoke_admin"
+    ],
+    "browser_execute_privilege": "none",
+    "service_role_execute_privilege": "only protected RPCs"
+  },
+  "security_definer": {
+    "public_functions_with_pinned_search_path": true,
+    "security_definers_without_pinned_search_path": 0,
+    "auth_bootstrap_trigger": "on_auth_user_created -> handle_new_user()",
+    "submission_status_trigger": "check_submission_status -> protect_submission_status()"
+  },
+  "dodo": {
+    "active_edge_functions": [],
+    "retired_edge_functions": ["dodo-checkout", "dodo-webhook"],
+    "endpoint_status": {
+      "dodo-checkout": 404,
+      "dodo-webhook": 404
+    },
+    "active_runtime_secret_names": [],
+    "historical_prompt_unlocks_preserved": true,
+    "external_account_credential_revocation": "Owner-level Dodo account revocation remains an external credential action; no Dodo transaction or payment API was invoked."
+  },
+  "storage": {
+    "current_buckets": [],
+    "current_objects": [],
+    "future_contract_documented": true,
+    "production_media_uploaded": false
+  },
+  "browser_visual_qa": {
+    "status": "not_run",
+    "reason": "agent-browser executable is not installed in the managed workspace",
+    "local_dev_server_boot": true,
+    "production_route_http_smoke": "all representative routes returned HTTP 200",
+    "existing_final_lock_captures_preserved": true
+  },
+  "invariants": {
+    "rows_deleted": 0,
+    "auth_users_deleted": 0,
+    "profiles_deleted": 0,
+    "submissions_deleted": 0,
+    "payment_provider_introduced": false,
+    "frontend_supabase_adapter_active": false,
+    "fixture_adapter_active": true,
+    "vercel_touched": false,
+    "dns_touched": false,
+    "wizup_touched": false
+  }
+}
