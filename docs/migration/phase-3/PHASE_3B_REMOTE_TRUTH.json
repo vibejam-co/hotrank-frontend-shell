@@ -10,9 +10,12 @@
   },
   "starting_head": "2a805dcc9e5fa446ebe41c6f6ef7d1c1cd57ff7a",
   "source_control": {
-    "final_head": "2a805dcc9e5fa446ebe41c6f6ef7d1c1cd57ff7a",
-    "checkpoint_commits": [],
-    "blocker": "Managed workspace denies writes to .git/index.lock."
+    "implementation_checkpoint": "bed559e",
+    "checkpoint_commits": [
+      "bed559e"
+    ],
+    "git_checkpoint_status": "complete",
+    "historical_blocker": "The original managed Codex workspace denied writes to .git/index.lock. The owner subsequently created the scoped Phase 3B checkpoint from ordinary Terminal."
   },
   "canonical_frontend_tag": {
     "name": "hotrank-frontend-v1-lock",
@@ -123,7 +126,10 @@
   },
   "dodo": {
     "active_edge_functions": [],
-    "retired_edge_functions": ["dodo-checkout", "dodo-webhook"],
+    "retired_edge_functions": [
+      "dodo-checkout",
+      "dodo-webhook"
+    ],
     "endpoint_status": {
       "dodo-checkout": 404,
       "dodo-webhook": 404

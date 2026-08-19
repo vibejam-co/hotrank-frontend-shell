@@ -55,10 +55,10 @@ captures remain preserved, and representative production routes returned HTTP
 
 ## Source-control note
 
-The managed workspace permits source-file writes but exposes `.git` as
-read-only, so checkpoint commits could not be created by this agent. The exact
-checkpoint-ready changes are present in the worktree; the smallest owner action
-is to make `.git` writable and commit the scoped Phase 3B files. No remote
-security work depends on that action.
+The original managed Codex workspace exposed `.git` as read-only and could
+not create the Phase 3B checkpoint itself. The owner subsequently created the
+scoped Phase 3B checkpoint from ordinary Terminal as commit `bed559e`
+(`security(hotrank): complete and certify phase 3b remediation`). No unrelated
+pre-existing worktree files were included.
 
 Phase 3C is not authorized by this artifact.
