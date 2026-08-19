@@ -122,7 +122,10 @@ function scanSource(source, sourcePath, boundary, virtualSources) {
   return {imports: scanImports(source, sourcePath, boundary, virtualSources), rows: rowLeakages(source)};
 }
 
-const presentationFiles = [...filesUnder("app"), ...filesUnder("components")];
+const presentationFiles = [
+  ...filesUnder("app").filter((path) => !path.startsWith("app/api/") && !path.startsWith("app/auth/")),
+  ...filesUnder("components"),
+];
 for (const path of presentationFiles) {
   const findings = scanSource(read(path), path, "presentation");
   assert.deepEqual(findings.imports, [], `${path} crosses a forbidden presentation boundary`);

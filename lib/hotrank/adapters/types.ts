@@ -31,3 +31,22 @@ export interface HotRankDataAdapter {
   getSearch(): SearchData;
   getSubmissionFlow(): SubmissionFlowData;
 }
+
+/**
+ * Server-side I/O is asynchronous. The fixture keeps the original synchronous
+ * contract used by the frozen presentation, while the Supabase adapter uses
+ * this explicit server contract so browser components never import a client.
+ */
+export interface HotRankAsyncDataAdapter {
+  getHome(): Promise<HomeData>;
+  getRankings(): Promise<RankingsData>;
+  getClipDetail(id: string, expanded: boolean): Promise<Clip>;
+  getCreators(): Promise<CreatorDirectoryData>;
+  getCreator(slug: string): Promise<CreatorProfileData | null>;
+  getActivity(): Promise<ActivityData>;
+  getProfile(): Promise<UserProfile>;
+  getSaved(): Promise<SavedData>;
+  getSavedPrompts(): Promise<SavedPromptsData>;
+  getSearch(): Promise<SearchData>;
+  getSubmissionFlow(): Promise<SubmissionFlowData>;
+}

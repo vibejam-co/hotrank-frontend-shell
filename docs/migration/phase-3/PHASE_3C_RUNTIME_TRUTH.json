@@ -1,0 +1,87 @@
+{
+  "phase": "3C",
+  "project": {
+    "name": "HOTRANK",
+    "ref": "csuejshnycgbfvtjbxoq",
+    "organization": "HotRank AI",
+    "organization_id": "oswgjjphugeqvilmmupn",
+    "region": "eu-west-1",
+    "source": "Phase 3B remote truth; live connector introspection permission-denied"
+  },
+  "source_control": {
+    "starting_head": "2e91e21dfd7c569fcbe78dfafbe2e6f5c8dd8b1d",
+    "final_head": "2e91e21dfd7c569fcbe78dfafbe2e6f5c8dd8b1d",
+    "checkpoint_commits": [],
+    "git_checkpoint_status": "blocked_by_managed_git_index_lock",
+    "canonical_frontend_tag": "hotrank-frontend-v1-lock",
+    "canonical_frontend_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa"
+  },
+  "backend": {
+    "adapter": "implemented",
+    "read_projections": [
+      "public_profiles",
+      "public_creators",
+      "public_clips",
+      "public_rankings",
+      "public_submissions",
+      "public_follow_counts",
+      "public_ignite_counts",
+      "public_save_counts"
+    ],
+    "default_mode": "fixture",
+    "supabase_mode": "explicit HOTRANK_BACKEND_MODE=supabase",
+    "missing_configuration": "fail_closed",
+    "fixture_preserved": true
+  },
+  "remote_operations": {
+    "migrations_added": 0,
+    "rows_modified": 0,
+    "rows_deleted": 0,
+    "auth_users_deleted": 0,
+    "profiles_deleted": 0,
+    "submissions_deleted": 0,
+    "media_uploaded": 0,
+    "dodo_operations": 0
+  },
+  "phase_3b_counts_observed": {
+    "profiles": 9,
+    "submissions": 8,
+    "creators": 0,
+    "clips": 0,
+    "rankings": 0,
+    "follows": 4,
+    "ignites": 6,
+    "saves": 3,
+    "prompt_unlocks": 0,
+    "storage_buckets": 0,
+    "storage_objects": 0
+  },
+  "security": {
+    "raw_rows_to_ui": false,
+    "base_table_browser_reads": false,
+    "base_table_browser_writes": false,
+    "browser_protected_rpc_execution": false,
+    "service_role_in_client_bundle": false,
+    "management_token_in_client_bundle": false,
+    "private_prompt_text_in_projection": false,
+    "admin_source": "private.admin_users",
+    "dodo_active": false,
+    "wizup_touched": false
+  },
+  "presentation": {
+    "material_drift": false,
+    "app_components_changed": false,
+    "styles_changed": false,
+    "media_changed": false,
+    "canonical_fixture_mode_preserved": true
+  },
+  "verification": {
+    "typecheck": "pass",
+    "tests": "pass",
+    "security_tests": "pass",
+    "build": "pass",
+    "route_http_smoke": "pass after final rebuild; Auth endpoints return controlled 503 without required env",
+    "browser_visual_qa": "not run; agent-browser executable unavailable",
+    "final_lock_captures_preserved": true
+  }
+}
