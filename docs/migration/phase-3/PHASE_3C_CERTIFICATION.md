@@ -48,9 +48,7 @@ routes from the frozen presentation graph. This keeps server imports out of
 the browser boundary while allowing dedicated Phase 3C security scans to
 inspect those routes.
 
-The managed environment denied creation of `.git/index.lock`, so no Phase 3C
-commit was created. The worktree implementation and verification are complete;
-the exact scoped file groups are reported in the handoff.
+The original managed Codex workspace denied creation of `.git/index.lock`. The owner subsequently created the scoped Phase 3C implementation checkpoint from ordinary Terminal as commit `6cbd5e8164f1dfd3ed0df968045d342bfc7b40e4` (`feat(hotrank): complete phase 3c supabase integration`). Unrelated pre-existing worktree files remained outside the checkpoint.
 
 ## Remaining owner gate
 
