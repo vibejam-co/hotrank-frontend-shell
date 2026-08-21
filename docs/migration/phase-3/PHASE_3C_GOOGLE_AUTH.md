@@ -20,8 +20,11 @@ Auth-user creation is introduced.
   the exact `/auth/callback` path; localhost is not hardcoded as the production
   redirect architecture.
 - `app/auth/callback/route.ts` exchanges the OAuth authorization code with
-  `exchangeCodeForSession(code)` and preserves the existing local-only `next`
-  validation, rejecting absolute and protocol-relative external destinations.
+  `exchangeCodeForSession(code)` using a response-bound server client. The
+  callback returns the same redirect response whose `cookies.set` receives the
+  Supabase auth mutations, preserving the session across the redirect. It also
+  preserves the existing local-only `next` validation, rejecting absolute and
+  protocol-relative external destinations.
 - The existing middleware/proxy refresh path and `GET /api/auth/session`
   remain the session source of truth.
 - The existing `AccountControl` and `POST /api/auth/sign-out` apply equally to
@@ -73,6 +76,14 @@ in the existing HOTRANK runtime truth; no privileged recheck was attempted.
   writes, Edge Function changes, Auth-user mutations, or remote row mutations.
 - Browser bundle scan found no privileged secret names.
 
+## Session persistence repair
+
+The prior callback created a Supabase server client whose cookie mutations were
+not attached to the redirect response, then returned a newly created redirect.
+That could complete OAuth while leaving the next `/api/auth/session` request
+unauthenticated. The surgical repair binds Supabase `setAll` directly to the
+redirect response and treats an exchange error as a controlled failure.
+
 ## Verification
 
 - `npm run typecheck` — PASS.
@@ -82,6 +93,8 @@ in the existing HOTRANK runtime truth; no privileged recheck was attempted.
 - Route smoke — PASS: `/`, `/rankings`, `/creators`, `/submit`, `/saved`,
   `/activity`, `/profile`, `/search`, and `/auth/sign-in` returned HTTP 200.
 - Callback probe — PASS: `next=https://evil.example` normalized to local `/`.
+- Callback cookie-boundary contract — PASS: exchange errors are handled and
+  the response carrying cookie mutations is returned.
 - Visual QA — PASS by browser DOM/layout inspection at desktop and 390px mobile;
   browser viewport was restored afterward.
 - Owner credentials were not entered and LIVE-B was not started.
