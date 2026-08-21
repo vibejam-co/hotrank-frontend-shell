@@ -5,6 +5,7 @@ import {Bell, Menu, Search, X} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 import {usePathname} from "next/navigation";
 import {HotRankLogo} from "@/components/brand/HotRankLogo";
+import {AccountControl} from "@/components/account-control";
 
 const mobileMenuId = "hotrank-mobile-menu";
 const primaryLinks = [
@@ -72,7 +73,7 @@ export function Header(){
       <div className="header-spacer"/>
       <Link href="/search" className="search-pill" aria-label="Open search"><Search size={16}/>Search by title or creator</Link>
       <button className="icon-btn" type="button" aria-label="Notifications"><Bell size={18}/></button>
-      <Link href="/profile" aria-label="Open profile"><img className="avatar" src="/media/creator-liora.png" alt="Profile"/></Link>
+      <AccountControl/>
       <button ref={triggerRef} className="icon-btn mobile-menu" type="button" aria-label={menuOpen?"Close menu":"Open menu"} aria-expanded={menuOpen} aria-controls={mobileMenuId} aria-haspopup="menu" onClick={()=>menuOpen?closeMenu():setMenuOpen(true)}>
         {menuOpen?<X size={19}/>:<Menu size={19}/>} 
       </button>
