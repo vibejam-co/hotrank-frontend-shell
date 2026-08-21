@@ -17,7 +17,7 @@ Auth-user creation is introduced.
   `lib/supabase/client.ts` calls `supabase.auth.signInWithOAuth` with provider
   exactly `google`.
 - The redirect target is derived from `window.location.origin` and points to
-  `/auth/callback?next=%2F`; localhost is not hardcoded as the production
+  the exact `/auth/callback` path; localhost is not hardcoded as the production
   redirect architecture.
 - `app/auth/callback/route.ts` exchanges the OAuth authorization code with
   `exchangeCodeForSession(code)` and preserves the existing local-only `next`

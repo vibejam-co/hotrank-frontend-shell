@@ -35,7 +35,7 @@ export default function SignInPage() {
     setError("");
     try {
       const supabase = createSupabaseBrowserClient();
-      const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent("/")}`;
+      const redirectTo = new URL("/auth/callback", window.location.origin).toString();
       const {data, error: oauthError} = await supabase.auth.signInWithOAuth({provider: "google", options: {redirectTo}});
       if (oauthError || !data.url) {
         setError("Google sign-in is unavailable");
