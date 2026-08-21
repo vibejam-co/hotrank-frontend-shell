@@ -1,0 +1,115 @@
+{
+  "phase": "3C-LIVE-A",
+  "certification_date": "2026-08-21",
+  "scope": "read-only public Supabase runtime, real adapter reads, unauthenticated Auth transport, and header Auth UX",
+  "project": {
+    "name": "HOTRANK",
+    "ref": "csuejshnycgbfvtjbxoq",
+    "url": "https://csuejshnycgbfvtjbxoq.supabase.co",
+    "url_match": true
+  },
+  "source_control": {
+    "branch": "main",
+    "starting_head": "be0c789f8cfdccea46f8d8dd616095497b0ee547",
+    "final_head": "be0c789f8cfdccea46f8d8dd616095497b0ee547",
+    "auth_ux_checkpoint": "be0c789",
+    "canonical_frontend_tag": "hotrank-frontend-v1-lock",
+    "canonical_frontend_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa",
+    "source_files_modified": [],
+    "certification_artifacts_updated": [
+      "docs/migration/phase-3/PHASE_3C_LIVE_A_CERTIFICATION.md",
+      "docs/migration/phase-3/PHASE_3C_LIVE_A_RUNTIME_TRUTH.json"
+    ]
+  },
+  "configuration": {
+    "backend_mode": "supabase",
+    "supabase_url_match": true,
+    "publishable_key_present": true,
+    "publishable_key_accepted": true,
+    "publishable_key_value_recorded": false,
+    "privileged_credentials_used": false
+  },
+  "public_read": {
+    "projection_names": [
+      "public_profiles",
+      "public_creators",
+      "public_clips",
+      "public_rankings",
+      "public_submissions",
+      "public_follow_counts",
+      "public_ignite_counts",
+      "public_save_counts"
+    ],
+    "direct_projection_statuses": {
+      "public_profiles": {"http": 200, "rows": 9},
+      "public_creators": {"http": 200, "rows": 0},
+      "public_clips": {"http": 200, "rows": 0},
+      "public_rankings": {"http": 200, "rows": 0},
+      "public_submissions": {"http": 200, "rows": 7},
+      "public_follow_counts": {"http": 200, "rows": 2},
+      "public_ignite_counts": {"http": 200, "rows": 3},
+      "public_save_counts": {"http": 200, "rows": 3}
+    },
+    "adapter_route_statuses": {
+      "home": 200,
+      "rankings": 200,
+      "creators": 200,
+      "search": 200
+    },
+    "real_adapter_reads": true,
+    "fixture_fallback": false,
+    "empty_projection_states_preserved": true,
+    "private_prompt_rows_with_text": 0,
+    "private_submission_fields_exposed": false
+  },
+  "security": {
+    "base_table_probe_statuses": {
+      "profiles": 401,
+      "creators": 401,
+      "clips": 401,
+      "rankings": 401,
+      "submissions": 401,
+      "follows": 401,
+      "ignites": 401,
+      "saves": 401,
+      "prompt_unlocks": 401
+    },
+    "adapter_reads_base_tables": false,
+    "private_prompt_leak_observed": false,
+    "client_privileged_secret_exposure": false,
+    "browser_bundle_forbidden_secret_scan": "pass"
+  },
+  "auth": {
+    "current_session": {"http": 200, "result": "user_null"},
+    "invalid_sign_in": {"http": 401, "result": "generic_controlled_failure"},
+    "sign_out_without_session": {"http": 200, "result": "ok"},
+    "callback_open_redirect": {"http": 307, "result": "normalized_to_local_root"},
+    "header_auth_ux": "truthful_unauthenticated_loading_state",
+    "authenticated_user_test": "not_performed_out_of_scope"
+  },
+  "remote_safety": {
+    "remote_migrations": 0,
+    "remote_row_mutations": 0,
+    "remote_row_deletions": 0,
+    "auth_users_created": 0,
+    "auth_users_deleted": 0,
+    "storage_writes": 0,
+    "edge_function_operations": 0,
+    "payment_operations": 0
+  },
+  "regression": {
+    "typecheck": "pass",
+    "tests": "pass",
+    "build": "pass",
+    "route_smoke": "pass",
+    "real_read_api_smoke": "pass",
+    "visual_qa": "source_diff_and_ssr_inspection; browser_automation_unavailable",
+    "canonical_ui_material_drift": "none"
+  },
+  "verdict": {
+    "status": "pass",
+    "ready_for_live_b_owner_gate": true,
+    "p0_remaining": "none_for_live_a",
+    "p1_remaining": "none_for_live_a"
+  }
+}
