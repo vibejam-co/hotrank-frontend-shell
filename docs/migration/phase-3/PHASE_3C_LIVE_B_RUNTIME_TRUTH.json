@@ -1,0 +1,86 @@
+{
+  "phase": "3C-LIVE-B",
+  "certification_date": "2026-08-21",
+  "scope": "authenticated existing-user Supabase session lifecycle",
+  "project": {
+    "name": "HOTRANK",
+    "ref": "csuejshnycgbfvtjbxoq",
+    "url": "https://csuejshnycgbfvtjbxoq.supabase.co",
+    "url_match": true
+  },
+  "source_control": {
+    "branch": "main",
+    "starting_head": "7f62f3d128f266740ee31a2069c981d94a9b7056",
+    "final_head": "7f62f3d128f266740ee31a2069c981d94a9b7056",
+    "canonical_frontend_tag": "hotrank-frontend-v1-lock",
+    "canonical_frontend_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa"
+  },
+  "account": {
+    "existing_owner_authorized_account": true,
+    "credentials_recorded": false,
+    "user_id_recorded": false,
+    "email_recorded": false
+  },
+  "authentication": {
+    "existing_user_sign_in": "pass",
+    "real_supabase_authentication": "pass",
+    "session_endpoint_authenticated": "pass",
+    "header_authenticated_state": "pass",
+    "account_menu": "pass",
+    "authenticated_email_visible": "pass",
+    "profile_link": "pass",
+    "saved_link": "pass",
+    "navigation_persistence": "pass",
+    "reload_persistence": "pass",
+    "middleware_session_refresh_preservation": "pass",
+    "sign_out": "pass",
+    "session_cleared_after_sign_out": "pass",
+    "post_reload_signed_out": "pass",
+    "signed_out_header": "pass"
+  },
+  "authorization": {
+    "authentication_equals_admin": false,
+    "admin_escalation_observed": false,
+    "client_privileged_secret_exposure": false,
+    "protected_table_dml_observed": false,
+    "management_api_access": false
+  },
+  "remote_safety": {
+    "remote_database_mutations": 0,
+    "auth_users_created": 0,
+    "auth_users_deleted": 0,
+    "password_resets": 0,
+    "database_changes": 0,
+    "rls_changes": 0,
+    "storage_writes": 0,
+    "edge_function_operations": 0,
+    "payment_operations": 0,
+    "deployments": 0,
+    "pushes": 0
+  },
+  "regression": {
+    "typecheck": "pass",
+    "tests": "pass",
+    "build": "pass",
+    "route_smoke": "pass",
+    "client_privileged_secret_scan": "pass",
+    "canonical_ui_material_drift": "none"
+  },
+  "known_follow_up": {
+    "profile_fixture_demo_content": true,
+    "profile_fixture_identity": "Lena Marlowe",
+    "classification": "P1 post-auth data integration",
+    "blocks_live_b_session_certification": false
+  },
+  "browser_evidence": {
+    "owner_authenticated_observation": true,
+    "independent_authenticated_browser_context_available": false,
+    "credentials_or_session_material_inspected": false
+  },
+  "verdict": {
+    "phase_3c_live_b": "pass",
+    "phase_3c_full_runtime_certified": true,
+    "p0_remaining": "none_for_authenticated_session",
+    "p1_remaining": "profile_data_integration"
+  }
+}
