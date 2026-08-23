@@ -42,4 +42,7 @@ intake always uses the authenticated server actor and starts pending.
 No approved model/provider credential is present in this repository. Until a
 review provider and adjudicator are activated, the review contract returns
 `ESCALATED` rather than auto-approving content. Founding Creator rollout and
-broad public submission opening remain closed until that gate is satisfied.
+broad public submission opening remain closed until that gate is satisfied. The
+server-only `HOTRANK_SUBMISSIONS_OPEN` gate defaults to `false`; it must not be
+set to `true` until provider activation, audit-write rehearsal, and the
+independent adjudication path have passed owner verification.

@@ -1,7 +1,7 @@
 # HOTRANK Production Readiness
 
 Date: 2026-08-23
-Current code checkpoint: `47bbb52`
+Current code checkpoint: `8d6f288`
 
 ## Product truth
 
@@ -11,8 +11,10 @@ read API, so authenticated identity is not replaced by the Lena Marlowe demo
 fixture. Empty remote account state is honest.
 
 Creator identity has a server-bound claim boundary. Submission intake binds the
-authenticated actor, validates required metadata and rights, starts pending,
-and cannot accept browser-selected moderation or ranking status.
+authenticated actor, validates required metadata and rights, starts pending
+when the owner opens the server gate, and cannot accept browser-selected
+moderation or ranking status. The gate defaults closed until review automation
+is activated.
 
 The prepared moderation system uses deterministic checks, narrow review-agent
 and independent-adjudicator interfaces, concise audit facts, and fail-closed
@@ -30,7 +32,7 @@ not receive direct table DML.
   required after deployment access is established.
 - Creator identity boundary: PASS, server actor-bound claim RPC.
 - Submission boundary: PASS in code/tests; additive migration is prepared,
-  not remotely applied.
+  not remotely applied; public intake is fail-closed by default.
 - Moderation foundation: PASS as provider-neutral fail-closed foundation.
 - Private prompt protection: PASS.
 - Approved-only ranking/publication boundary: PASS.
@@ -49,13 +51,14 @@ redirects to `www.hotrank.xyz`, whose legacy Vercel deployment is not one of
 the visible HOTRANK canonical projects.
 
 P1: apply/rehearse the prepared moderation migration, activate an approved
-review provider before broad public submissions, complete legal review, and
-perform a preview authenticated runtime retest.
+review provider and adjudicator, then explicitly open `HOTRANK_SUBMISSIONS_OPEN`
+before broad public submissions; complete legal review and perform a preview
+authenticated runtime retest.
 
 ## Verification
 
 `npm run typecheck`, `npm test`, `npm run lint`, and the focused Phase
-3B/3C/Phase 4 boundary tests pass. The eight Supabase public projections each
+3B/3C/Phase 4 boundary and moderation runtime tests pass. The eight Supabase public projections each
 returned HTTP 200 with the browser-safe key, and the explicit Supabase-mode
 read API returned successfully for home, rankings, creators, clip detail,
 activity, profile, saved, saved prompts, search, and submission resources.
@@ -63,5 +66,6 @@ Production build and representative route smoke pass. Responsive visual smoke
 passes at desktop, tablet, and mobile widths with no horizontal overflow; the
 tablet hero/header overflow was repaired in `47bbb52`. Client bundle and
 browser-entrypoint privileged-secret scans are clean, and OAuth diagnostic
-noise is absent. No remote mutations, deployment, DNS change, payment
-operation, or push occurred.
+noise is absent. The submission API and UI are closed by default while the
+review provider is unconfigured. No remote mutations, deployment, DNS change,
+payment operation, or push occurred.

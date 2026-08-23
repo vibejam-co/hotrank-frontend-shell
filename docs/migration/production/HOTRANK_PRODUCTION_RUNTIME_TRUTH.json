@@ -3,7 +3,7 @@
   "source": {
     "repository": "/Users/Ira/Desktop/hotrank-frontend-final",
     "branch": "main",
-    "checkpoint_under_test": "47bbb52",
+    "checkpoint_under_test": "8d6f288",
     "canonical_frontend_tag": "hotrank-frontend-v1-lock",
     "canonical_frontend_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa"
   },
@@ -17,7 +17,8 @@
   "canonical_runtime": {
     "backend_mode": "supabase",
     "required_public_env_names": ["HOTRANK_BACKEND_MODE", "NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"],
-    "required_server_only_env_names": ["SUPABASE_SERVICE_ROLE_KEY"],
+    "required_server_only_env_names": ["SUPABASE_SERVICE_ROLE_KEY", "HOTRANK_SUBMISSIONS_OPEN"],
+    "submission_intake_open_default": false,
     "privileged_values_recorded": false,
     "dodo_active_runtime": false,
     "wizup_fallback": false,
@@ -27,7 +28,7 @@
     "auth": "pass",
     "real_profile_identity_boundary": "pass",
     "creator_identity_boundary": "pass",
-    "submission_boundary": "pass",
+    "submission_boundary": "pass_fail_closed_until_provider_activation",
     "moderation_foundation": "pass_provider_neutral_fail_closed",
     "private_prompt_protection": "pass",
     "approved_only_publication": "pass",
@@ -61,6 +62,8 @@
       "public_save_counts": 200
     },
     "adapter_read_resources": "pass_explicit_supabase_mode",
+    "moderation_runtime": "pass_deterministic_escalation_and_adjudication",
+    "submission_gate": "closed_default_provider_unconfigured",
     "visual_automation": "pass_desktop_tablet_mobile_and_requested_routes",
     "responsive_overflow": "none",
     "client_bundle_secret_scan": "clean",
@@ -81,6 +84,8 @@
   },
   "verdict": {
     "ready_for_production_deployment_gate": false,
-    "blockers": ["canonical Vercel project/domain ownership access", "owner application/rehearsal of prepared moderation migration", "owner legal review", "approved moderation provider activation before broad submissions"]
+    "deployment_plan": "ready",
+    "rollback_plan": "ready",
+    "blockers": ["canonical Vercel project/domain ownership access", "owner application/rehearsal of prepared moderation migration", "owner legal review", "approved moderation provider/adjudicator activation and explicit submission-gate opening"]
   }
 }
