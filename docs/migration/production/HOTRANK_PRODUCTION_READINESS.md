@@ -1,7 +1,7 @@
 # HOTRANK Production Readiness
 
 Date: 2026-08-23
-Current code checkpoint: `8d6f288`
+Current code checkpoint: `37966c9`
 
 ## Product truth
 

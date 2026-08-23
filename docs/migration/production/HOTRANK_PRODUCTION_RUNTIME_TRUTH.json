@@ -3,7 +3,7 @@
   "source": {
     "repository": "/Users/Ira/Desktop/hotrank-frontend-final",
     "branch": "main",
-    "checkpoint_under_test": "8d6f288",
+    "checkpoint_under_test": "37966c9",
     "canonical_frontend_tag": "hotrank-frontend-v1-lock",
     "canonical_frontend_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa"
   },
