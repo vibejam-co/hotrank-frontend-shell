@@ -29,7 +29,7 @@ assert.match(search, /aria-modal/);
 assert.match(search, /ArrowDown/);
 assert.match(search, /onKeyDown={handleKeyDown}/);
 assert.match(search, /data-search-highlight/);
-const saved = read("app/saved/page.tsx");
+const saved = read("components/saved-view.tsx");
 assert.match(saved, /onChange={setActive}/);
 const logo = read("components/brand/HotRankLogo.tsx");
 const header = read("components/header.tsx");

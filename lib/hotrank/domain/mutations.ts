@@ -26,6 +26,7 @@ export interface SubmissionCreateInput {
   recipeIncluded?: boolean;
   aiStackIncluded?: boolean;
   workflowNotesIncluded?: boolean;
+  rightsConfirmed?: boolean;
 }
 
 export interface SubmissionUpdateInput extends SubmissionCreateInput {

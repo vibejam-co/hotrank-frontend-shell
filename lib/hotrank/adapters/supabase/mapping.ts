@@ -169,9 +169,36 @@ export function mapCreatorProfile(slug: string, snapshot: MappedSnapshot): Creat
 
 export const mapActivity = (): ActivityData => ({today: [], earlier: [], pulse: {clipsUp: "0", clipsDown: "0", netMovement: "0"}, topMover: "No activity yet", topMoverLabel: ""});
 
-export function mapProfileData(userId: string | null, snapshot: MappedSnapshot): UserProfile {
-  const creator = userId ? creatorsFrom(snapshot).find((item) => item.id === userId) : undefined;
-  return {id: userId ?? "anonymous", name: creator?.name ?? "HOTRANK member", handle: creator?.handle ?? "", avatar: creator?.avatar ?? emptyAvatar, memberSinceLabel: "", stats: [], recentlySaved: [], collections: [], followedCreators: [], promptLibrary: []};
+export interface ProfileIdentity {
+  id: string;
+  email: string | null;
+  displayName?: string;
+  handle?: string;
+}
+
+function memberSinceLabel(createdAt: string | null | undefined): string {
+  if (!createdAt) return "";
+  const date = new Date(createdAt);
+  return Number.isNaN(date.getTime()) ? "" : `Member since ${date.toLocaleDateString("en", {month: "long", year: "numeric"})}`;
+}
+
+export function mapProfileData(userId: string | null, snapshot: MappedSnapshot, identity?: ProfileIdentity | null): UserProfile {
+  const profileRow = userId ? snapshot.profiles.find((row) => row.id === userId) : undefined;
+  const profile = profileRow ? mapProfile(profileRow) : undefined;
+  const fallbackName = text(identity?.displayName, text(identity?.email?.split("@")[0], "HOTRANK member"));
+  const fallbackHandle = text(identity?.handle);
+  return {
+    id: userId ?? "anonymous",
+    name: profile?.name ?? fallbackName,
+    handle: profile?.handle ?? (fallbackHandle ? `@${fallbackHandle.replace(/^@/, "")}` : ""),
+    avatar: profile?.avatar ?? emptyAvatar,
+    memberSinceLabel: memberSinceLabel(profileRow?.created_at),
+    stats: [],
+    recentlySaved: [],
+    collections: [],
+    followedCreators: [],
+    promptLibrary: [],
+  };
 }
 
 export const mapSaved = (): SavedData => ({savedClips: [], collections: [], prompts: [], followedCreators: []});

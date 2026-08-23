@@ -4,6 +4,7 @@ import type {InteractionInput, ModerationInput, ProfileUpdateInput, RankingUpser
 import {createSupabaseServiceClient} from "@/lib/supabase/service";
 import {requireCurrentHotRankUser} from "@/lib/hotrank/server/auth";
 import {getHotRankBackendMode, HotRankConfigurationError} from "@/lib/hotrank/runtime";
+import {submissionIntake} from "@/lib/hotrank/moderation";
 
 export const dynamic = "force-dynamic";
 
@@ -23,8 +24,23 @@ export async function POST(request: Request) {
     const mutation = createMutationAdapter(createSupabaseServiceClient());
     const input = body.input;
     switch (action) {
-      case "update-profile": await mutation.updateProfile(user.id, {...input, profileId: requireId(input.profileId, "profileId"), username: requireText(input.username, "username"), displayName: requireText(input.displayName, "displayName"), handle: requireText(input.handle, "handle"), avatarUrl: typeof input.avatarUrl === "string" ? input.avatarUrl : "", bio: typeof input.bio === "string" ? input.bio : "", links: Array.isArray(input.links) && input.links.every((item) => typeof item === "string") ? input.links as string[] : []} as ProfileUpdateInput); break;
-      case "create-submission": await mutation.createSubmission(user.id, {...input, sourceUrl: requireText(input.sourceUrl, "sourceUrl"), title: requireText(input.title, "title")} as SubmissionCreateInput); break;
+      case "update-profile": await mutation.updateProfile(user.id, {...input, profileId: user.id, username: requireText(input.username, "username"), displayName: requireText(input.displayName, "displayName"), handle: requireText(input.handle, "handle"), avatarUrl: typeof input.avatarUrl === "string" ? input.avatarUrl : "", bio: typeof input.bio === "string" ? input.bio : "", links: Array.isArray(input.links) && input.links.every((item) => typeof item === "string") ? input.links as string[] : []} as ProfileUpdateInput); break;
+      case "create-submission": {
+        const candidate = {
+          sourceUrl: requireText(input.sourceUrl, "sourceUrl"),
+          title: requireText(input.title, "title"),
+          platform: requireText(input.platform, "platform"),
+          creatorHandle: requireText(input.creatorHandle, "creatorHandle"),
+          canonicalUrl: requireText(input.canonicalUrl, "canonicalUrl"),
+          rightsConfirmed: input.rightsConfirmed === true,
+          promptVisibility: typeof input.promptVisibility === "string" ? input.promptVisibility as "free" | "locked" | "private" : "free",
+          promptText: typeof input.promptText === "string" ? input.promptText : "",
+        };
+        const intake = submissionIntake(candidate);
+        if (!intake.ok) return NextResponse.json({error: "Submission needs changes", code: "SUBMISSION_NEEDS_CHANGES", reasons: intake.reasons}, {status: 422});
+        await mutation.createSubmission(user.id, {...input, ...candidate} as SubmissionCreateInput);
+        break;
+      }
       case "update-submission": await mutation.updateSubmission(user.id, {...input, submissionId: requireId(input.submissionId, "submissionId"), sourceUrl: typeof input.sourceUrl === "string" ? input.sourceUrl : "", title: requireText(input.title, "title")} as SubmissionUpdateInput); break;
       case "claim-creator": await mutation.claimCreator(user.id, requireId(input.creatorId, "creatorId")); break;
       case "save": await mutation.save(user.id, {submissionId: requireId(input.submissionId, "submissionId")}); break;

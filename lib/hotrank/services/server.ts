@@ -22,7 +22,16 @@ const fixtureAsyncAdapter: HotRankAsyncDataAdapter = {
 
 export async function createServerHotRankAdapter(): Promise<HotRankAsyncDataAdapter> {
   if (getHotRankBackendMode() === "fixture") return fixtureAsyncAdapter;
-  return createSupabaseAdapter(await createSupabaseServerClient());
+  const client = await createSupabaseServerClient();
+  const {data} = await client.auth.getUser();
+  const user = data.user;
+  const metadata = user?.user_metadata && typeof user.user_metadata === "object" ? user.user_metadata as Record<string, unknown> : {};
+  return createSupabaseAdapter(client, user ? {
+    id: user.id,
+    email: user.email ?? null,
+    displayName: typeof metadata.name === "string" ? metadata.name : typeof metadata.full_name === "string" ? metadata.full_name : undefined,
+    handle: typeof metadata.user_name === "string" ? metadata.user_name : typeof metadata.preferred_username === "string" ? metadata.preferred_username : undefined,
+  } : null);
 }
 
 export async function readServerHotRank(resource: string, id?: string, expanded = false): Promise<unknown> {

@@ -5,7 +5,7 @@ import type {HotRankAsyncDataAdapter} from "@/lib/hotrank/adapters/types";
 import type {ActivityData, Clip, CreatorDirectoryData, CreatorProfileData, HomeData, RankingsData, SavedData, SavedPromptsData, SearchData, SubmissionFlowData, UserProfile} from "@/lib/hotrank/domain/types";
 import {getHotRankTimeoutMs, HotRankDataError} from "@/lib/hotrank/runtime";
 import {asRows, type PublicClipRow, type PublicCreatorRow, type PublicFollowCountRow, type PublicInteractionCountRow, type PublicProfileRow, type PublicRankingRow, type PublicSubmissionRow} from "@/lib/hotrank/adapters/supabase/rows";
-import {mapActivity, mapCreatorProfile, mapCreators, mapHome, mapProfileData, mapRankings, mapSaved, mapSavedPrompts, mapSearch, mapSubmissionFlow, type MappedSnapshot} from "@/lib/hotrank/adapters/supabase/mapping";
+import {mapActivity, mapCreatorProfile, mapCreators, mapHome, mapProfileData, mapRankings, mapSaved, mapSavedPrompts, mapSearch, mapSubmissionFlow, type MappedSnapshot, type ProfileIdentity} from "@/lib/hotrank/adapters/supabase/mapping";
 
 type ReadClient = SupabaseClient;
 
@@ -47,7 +47,7 @@ async function snapshot(client: ReadClient): Promise<MappedSnapshot> {
   };
 }
 
-export function createSupabaseAdapter(client: ReadClient, userId: string | null = null): HotRankAsyncDataAdapter {
+export function createSupabaseAdapter(client: ReadClient, identity: ProfileIdentity | null = null): HotRankAsyncDataAdapter {
   return {
     async getHome(): Promise<HomeData> { return mapHome(await snapshot(client)); },
     async getRankings(): Promise<RankingsData> { const data = await snapshot(client); return mapRankings(data); },
@@ -55,7 +55,7 @@ export function createSupabaseAdapter(client: ReadClient, userId: string | null 
     async getCreators(): Promise<CreatorDirectoryData> { return mapCreators(await snapshot(client)); },
     async getCreator(slug: string): Promise<CreatorProfileData | null> { return mapCreatorProfile(slug, await snapshot(client)); },
     async getActivity(): Promise<ActivityData> { return mapActivity(); },
-    async getProfile(): Promise<UserProfile> { return mapProfileData(userId, await snapshot(client)); },
+    async getProfile(): Promise<UserProfile> { return mapProfileData(identity?.id ?? null, await snapshot(client), identity); },
     async getSaved(): Promise<SavedData> { return mapSaved(); },
     async getSavedPrompts(): Promise<SavedPromptsData> { return mapSavedPrompts(); },
     async getSearch(): Promise<SearchData> { return mapSearch(await snapshot(client)); },
