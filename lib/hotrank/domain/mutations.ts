@@ -43,6 +43,17 @@ export interface ModerationInput {
   status: "pending" | "approved" | "rejected" | "archived";
 }
 
+export interface ModerationReviewInput {
+  submissionId: string;
+  decision: "APPROVED" | "NEEDS_CHANGES" | "REJECTED" | "ESCALATED";
+  reviewRulesetVersion: string;
+  reviewMethod: "deterministic" | "review_agent" | "independent_adjudicator";
+  mechanicalChecks: unknown[];
+  agentAssessment?: Record<string, unknown> | null;
+  confidence?: number | null;
+  reasonCodes: string[];
+}
+
 export interface RankingUpsertInput {
   clipId: string;
   category: string;

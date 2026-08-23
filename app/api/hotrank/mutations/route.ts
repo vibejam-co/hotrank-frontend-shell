@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 import {createMutationAdapter} from "@/lib/hotrank/adapters/supabase/mutations";
-import type {InteractionInput, ModerationInput, ProfileUpdateInput, RankingUpsertInput, SubmissionCreateInput, SubmissionUpdateInput} from "@/lib/hotrank/domain/mutations";
+import type {InteractionInput, ModerationInput, ModerationReviewInput, ProfileUpdateInput, RankingUpsertInput, SubmissionCreateInput, SubmissionUpdateInput} from "@/lib/hotrank/domain/mutations";
 import {createSupabaseServiceClient} from "@/lib/supabase/service";
 import {requireCurrentHotRankUser} from "@/lib/hotrank/server/auth";
 import {getHotRankBackendMode, HotRankConfigurationError} from "@/lib/hotrank/runtime";
@@ -50,6 +50,13 @@ export async function POST(request: Request) {
       case "ignite": await mutation.ignite(user.id, {submissionId: requireId(input.submissionId, "submissionId")}); break;
       case "remove-ignite": await mutation.removeIgnite(user.id, {submissionId: requireId(input.submissionId, "submissionId")}); break;
       case "moderate": if (!isUuid(input.submissionId) || !["pending", "approved", "rejected", "archived"].includes(String(input.status))) throw new Error("Invalid moderation input"); await mutation.moderate(user.id, input as unknown as ModerationInput); break;
+      case "moderation-review": {
+        const decisions = ["APPROVED", "NEEDS_CHANGES", "REJECTED", "ESCALATED"];
+        const methods = ["deterministic", "review_agent", "independent_adjudicator"];
+        if (!isUuid(input.submissionId) || !decisions.includes(String(input.decision)) || !methods.includes(String(input.reviewMethod)) || typeof input.reviewRulesetVersion !== "string" || !Array.isArray(input.mechanicalChecks) || !Array.isArray(input.reasonCodes) || !input.reasonCodes.every((item) => typeof item === "string")) throw new Error("Invalid moderation review input");
+        await mutation.recordModerationReview(user.id, {...input, submissionId: input.submissionId, decision: input.decision, reviewRulesetVersion: input.reviewRulesetVersion, reviewMethod: input.reviewMethod, mechanicalChecks: input.mechanicalChecks, reasonCodes: input.reasonCodes} as unknown as ModerationReviewInput);
+        break;
+      }
       case "upsert-ranking": if (!isUuid(input.clipId) || typeof input.category !== "string" || typeof input.rankPosition !== "number" || !Number.isInteger(input.rankPosition) || input.rankPosition < 1 || typeof input.trendDirection !== "string") throw new Error("Invalid ranking input"); await mutation.upsertRanking(user.id, input as unknown as RankingUpsertInput); break;
       case "delete-ranking": await mutation.deleteRanking(user.id, requireId(input.rankingId, "rankingId")); break;
       default: return NextResponse.json({error: "Unsupported mutation"}, {status: 400});

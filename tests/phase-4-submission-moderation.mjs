@@ -7,6 +7,7 @@ const submit = read("components/submit-flow.tsx");
 const deterministic = read("lib/hotrank/moderation/deterministic.ts");
 const moderation = read("lib/hotrank/moderation/index.ts");
 const types = read("lib/hotrank/moderation/types.ts");
+const migration = read("supabase/migrations/20260823000000_moderation_foundation.sql");
 
 assert.match(route, /submissionIntake\(candidate\)/);
 assert.match(route, /mutation\.createSubmission\(user\.id/);
@@ -19,5 +20,10 @@ for (const rule of ["TITLE_REQUIRED", "SOURCE_URL_VALID", "PLATFORM_SUPPORTED", 
 assert.match(moderation, /decision: "ESCALATED"/);
 assert.match(moderation, /REVIEW_PROVIDER_NOT_CONFIGURED/);
 for (const state of ["APPROVED", "NEEDS_CHANGES", "REJECTED", "ESCALATED"]) assert.match(types, new RegExp(state));
+assert.match(route, /moderation-review/);
+assert.match(migration, /rights_confirmed/);
+assert.match(migration, /submission_moderation_reviews/);
+assert.match(migration, /hotrank_record_moderation_review/);
+assert.match(migration, /revoke all on function public\.hotrank_record_moderation_review/);
 
 console.log("HOTRANK submission and moderation boundary contract passed");
