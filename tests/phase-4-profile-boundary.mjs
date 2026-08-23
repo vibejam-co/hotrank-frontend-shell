@@ -13,6 +13,7 @@ const server = read("lib/hotrank/services/server.ts");
 assert.match(profileView, /\/api\/hotrank\/read\?resource=profile/);
 assert.doesNotMatch(profile, /getUserProfile|Lena Marlowe|user-lena-marlowe/);
 assert.doesNotMatch(profileView, /Lena Marlowe|Frontend demo state only/);
+assert.match(profileView, /profile\.id !== "anonymous"/);
 assert.doesNotMatch(profileActions, /Lena Marlowe|Frontend demo state only|defaultValue/);
 assert.match(profileActions, /action: "update-profile"/);
 assert.match(profileActions, /\/api\/hotrank\/mutations/);
