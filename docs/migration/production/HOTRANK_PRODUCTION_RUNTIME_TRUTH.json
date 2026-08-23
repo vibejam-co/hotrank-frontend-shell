@@ -1,0 +1,71 @@
+{
+  "date": "2026-08-23",
+  "source": {
+    "repository": "/Users/Ira/Desktop/hotrank-frontend-final",
+    "branch": "main",
+    "checkpoint_under_test": "94c4fe6",
+    "canonical_frontend_tag": "hotrank-frontend-v1-lock",
+    "canonical_frontend_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa"
+  },
+  "supabase": {
+    "project": "HOTRANK",
+    "ref": "csuejshnycgbfvtjbxoq",
+    "url": "https://csuejshnycgbfvtjbxoq.supabase.co",
+    "match": true,
+    "remote_mutations": 0
+  },
+  "canonical_runtime": {
+    "backend_mode": "supabase",
+    "required_public_env_names": ["HOTRANK_BACKEND_MODE", "NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"],
+    "required_server_only_env_names": ["SUPABASE_SERVICE_ROLE_KEY"],
+    "privileged_values_recorded": false,
+    "dodo_active_runtime": false,
+    "wizup_fallback": false,
+    "client_privileged_secret_exposure": false
+  },
+  "product_boundaries": {
+    "auth": "pass",
+    "real_profile_identity_boundary": "pass",
+    "creator_identity_boundary": "pass",
+    "submission_boundary": "pass",
+    "moderation_foundation": "pass_provider_neutral_fail_closed",
+    "private_prompt_protection": "pass",
+    "approved_only_publication": "pass",
+    "ranking_separate_from_moderation": true,
+    "posthog": "spec_only",
+    "legal_surfaces": "drafts_prepared_owner_review_required"
+  },
+  "production_observation": {
+    "apex": "https://hotrank.xyz",
+    "apex_behavior": "307_redirect_to_www",
+    "www_behavior": "legacy_spa_html_observed",
+    "www_title": "My Google AI Studio App",
+    "visible_vercel_account_projects": ["wizupxyz", "lumina-intuitive-healing"],
+    "canonical_hotrank_vercel_project_discovered": false,
+    "git_remote_configured": false
+  },
+  "regression": {
+    "typecheck": "pass",
+    "tests": "pass",
+    "build": "pass",
+    "route_smoke": "pass",
+    "visual_automation": "not_repeated_in_this_mission",
+    "canonical_ui_material_drift": "none_by_source_and_existing_qa_artifacts"
+  },
+  "remote_safety": {
+    "database_migrations_applied": 0,
+    "database_rows_mutated": 0,
+    "auth_users_created": 0,
+    "auth_users_deleted": 0,
+    "password_resets": 0,
+    "storage_writes": 0,
+    "payments": 0,
+    "deployments": 0,
+    "dns_changes": 0,
+    "pushes": 0
+  },
+  "verdict": {
+    "ready_for_production_deployment_gate": false,
+    "blockers": ["canonical Vercel project/domain ownership access", "owner application/rehearsal of prepared moderation migration", "owner legal review", "approved moderation provider activation before broad submissions"]
+  }
+}
