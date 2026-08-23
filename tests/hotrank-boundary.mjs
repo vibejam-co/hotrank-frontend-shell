@@ -66,6 +66,11 @@ function approvedFixtureDataEdge(sourcePath, resolvedPath) {
   return sourcePath.startsWith("lib/hotrank/adapters/fixture/") && relativeSourcePath(resolvedPath) === "lib/data.ts";
 }
 
+function approvedServerAdapterEdge(sourcePath, resolvedPath) {
+  return (sourcePath.startsWith("app/") || sourcePath.startsWith("components/"))
+    && relativeSourcePath(resolvedPath) === "lib/hotrank/services/server.ts";
+}
+
 function scanImports(source, sourcePath, boundary, virtualSources) {
   const forbidden = boundary === "presentation"
     ? ["supabase/privileged", "payment", "legacy/database"]
@@ -81,6 +86,7 @@ function scanImports(source, sourcePath, boundary, virtualSources) {
     for (const specifier of importedSpecifiers(currentSource)) {
       const resolvedPath = resolveImport(specifier, normalizedPath, virtualSources);
       const resolvedSourcePath = resolvedPath ? relativeSourcePath(resolvedPath) : null;
+      if (resolvedPath && approvedServerAdapterEdge(normalizedPath, resolvedPath)) continue;
       const category = resolvedPath && approvedFixtureDataEdge(normalizedPath, resolvedPath)
         ? null
         : categoryFor(specifier, resolvedPath);

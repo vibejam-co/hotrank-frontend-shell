@@ -1,15 +1,10 @@
-"use client";
+import {CreatorDirectoryView} from "@/components/creator-directory-view";
+import {readServerHotRank} from "@/lib/hotrank/services/server";
+import type {CreatorDirectoryData} from "@/lib/hotrank/domain/types";
 
-import {useMemo, useState} from "react";
-import type {CSSProperties} from "react";
-import {CreatorCard} from "@/components/cards";
-import {FollowButton} from "@/components/interaction-controls";
-import {getCreatorDirectory} from "@/lib/hotrank";
+export const dynamic = "force-dynamic";
 
-export default function Creators() {
-  const [category, setCategory] = useState("All");
-  const [chartExpanded, setChartExpanded] = useState(false);
-  const data = getCreatorDirectory();
-  const chartRows = useMemo(() => chartExpanded ? data.chartExpanded : data.chart, [chartExpanded, data.chart, data.chartExpanded]);
-  return <main className="shell"><div className="creator-top"><section className="card feature-creator" style={{"--creator-focal": "right bottom"} as CSSProperties}><div className="eyebrow pink">Featured creator</div><h1 className="serif">{data.featured.name}</h1><p style={{maxWidth: 340, fontSize: 16}}>{data.featured.bio}</p><div className="meta">◎　{data.featured.location}</div><div className="stat-row" style={{marginTop: 26}}><div className="stat"><strong>{data.featured.rankLabel}</strong><span>Creator rank　<span className="pink">{data.featured.movementLabel}</span></span></div><div className="stat"><strong>{data.featured.followersLabel?.split(" ")[0]}</strong><span>Followers</span></div></div><FollowButton/></section><section className="card chart"><div className="section-head"><span className="label">Creator chart</span><button className="view-all" type="button" onClick={() => setChartExpanded((value) => !value)}>View {chartExpanded ? "less" : "all"}</button></div><div className="creator-list">{chartRows.map((item, index) => <div className="mini-row" key={item.id}><span>{index + 1}</span><img src={item.avatar} alt={`${item.name} portrait`}/><span className="serif">{item.name}</span><span className="pink">{index === 0 ? "—" : `▲ ${index + 3}`}</span><span>{item.followersLabel?.split(" ")[0]}</span></div>)}</div><div className="chips" style={{marginTop: 16}}>{data.categories.map((item) => <button type="button" className={`tag ${category === item ? "active pink" : ""}`} key={item} onClick={() => setCategory(item)}>{item}</button>)}</div></section><section className="card rising"><div className="section-head"><span className="label">Rising creators</span><button className="view-all" type="button" onClick={() => setChartExpanded(true)}>View all</button></div>{data.rising.map((item, index) => <div className="mini-row" key={item.id}><img src={item.avatar} alt={`${item.name} portrait`}/><span className="serif">{item.name}<small className="meta" style={{display: "block"}}>{item.roleLabel} · {item.weeklyMovementLabel}</small></span><span className="pink">{58 + index * 5}</span></div>)}</section></div><div className="creator-rails section"><section className="card" style={{padding: 16}}><div className="section-head"><h2 className="serif">Most followed</h2><span className="view-all">View all　›</span></div><div className="creator-cards">{data.mostFollowed.slice(0, 5).map((item) => <CreatorCard key={item.id} creator={item}/>)}</div></section><section className="card" style={{padding: 16}}><div className="section-head"><h2 className="serif">New voices</h2><span className="view-all">View all　›</span></div><div className="creator-cards">{data.newVoices.map((item) => <CreatorCard key={item.id} creator={item}/>)}</div></section></div></main>;
+export default async function Creators() {
+  const data = await readServerHotRank("creators") as CreatorDirectoryData;
+  return <CreatorDirectoryView data={data}/>;
 }

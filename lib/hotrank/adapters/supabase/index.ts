@@ -51,7 +51,7 @@ export function createSupabaseAdapter(client: ReadClient, identity: ProfileIdent
   return {
     async getHome(): Promise<HomeData> { return mapHome(await snapshot(client)); },
     async getRankings(): Promise<RankingsData> { const data = await snapshot(client); return mapRankings(data); },
-    async getClipDetail(id: string, _expanded: boolean): Promise<Clip> { const data = await snapshot(client); const clips = mapSearch(data).clips; return clips.find((clip) => clip.id === id || clip.slug === id) ?? mapHome(data).hero; },
+    async getClipDetail(id: string, _expanded: boolean): Promise<Clip> { const data = await snapshot(client); const clips = mapSearch(data).clips; return clips.find((clip) => clip.id === id || clip.slug === id) ?? {id: "empty-clip", slug: "empty-clip", title: "No approved clips yet", poster: "/brand/hotrank/v2/hotrank-primary.png", ratio: "16:9", creator: {id: "empty-creator", slug: "empty-creator", name: "No public creators yet", avatar: "/brand/hotrank/v2/hotrank-icon-pink.png"}, heat: "—", movement: {direction: "flat", label: "—"}}; },
     async getCreators(): Promise<CreatorDirectoryData> { return mapCreators(await snapshot(client)); },
     async getCreator(slug: string): Promise<CreatorProfileData | null> { return mapCreatorProfile(slug, await snapshot(client)); },
     async getActivity(): Promise<ActivityData> { return mapActivity(); },

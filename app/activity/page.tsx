@@ -1,5 +1,8 @@
 import {ArrowUpRight, Bookmark, MessageCircle, ShieldCheck} from "lucide-react";
-import {getActivityData} from "@/lib/hotrank";
+import {readServerHotRank} from "@/lib/hotrank/services/server";
+import type {ActivityData} from "@/lib/hotrank/domain/types";
+
+export const dynamic = "force-dynamic";
 
 function ActivityIcon({kind}: {kind: "rank-up" | "follow" | "save" | "approved" | "message"}) {
   if (kind === "rank-up") return <ArrowUpRight size={18}/>;
@@ -9,8 +12,8 @@ function ActivityIcon({kind}: {kind: "rank-up" | "follow" | "save" | "approved" 
   return <MessageCircle size={18}/>;
 }
 
-export default function Activity() {
-  const data = getActivityData();
+export default async function Activity() {
+  const data = await readServerHotRank("activity") as ActivityData;
   const renderRow = (item: typeof data.today[number]) => <div className="activity-row" key={item.id}><span className="pink">●</span><img src={item.thumbnail} alt={`${item.title} thumbnail`}/><span className="icon-btn"><ActivityIcon kind={item.icon}/></span><div><div className="serif" style={{fontSize: 22}}>{item.title}</div><div>{item.message}</div></div><div><time className="meta">{item.timeLabel}</time><div className={`movement ${item.movement.direction === "down" ? "down" : "up"}`}>{item.movement.label}</div></div></div>;
   return <main className="shell"><h1 className="page-title serif">Activity</h1><div className="activity-layout"><section><h2 className="serif">Today</h2>{data.today.map(renderRow)}<h2 className="serif section">Earlier</h2>{data.earlier.map(renderRow)}</section><aside><div className="card pulse"><div className="section-head"><h2 className="serif">Ranking Pulse</h2><span>Last 7 days⌄</span></div><div className="meta">Overall movement across your categories</div><div className="chart-line"><svg className="ranking-chart" viewBox="0 0 480 230" role="img" aria-label="Ranking movement over the last seven days: up 13 net, ending at plus 8"><line className="chart-grid" x1="20" y1="34" x2="460" y2="34"/><line className="chart-grid" x1="20" y1="96" x2="460" y2="96"/><line className="chart-grid" x1="20" y1="158" x2="460" y2="158"/><line className="chart-axis" x1="20" y1="190" x2="460" y2="190"/><text x="0" y="38">+12</text><text x="4" y="100">+6</text><text x="8" y="162">0</text><text x="0" y="194">−6</text><path className="chart-area" d="M20 154 L108 142 L196 151 L284 105 L372 118 L460 54 L460 190 L20 190 Z"/><path className="chart-trend" d="M20 154 L108 142 L196 151 L284 105 L372 118 L460 54"/><circle className="chart-point" cx="20" cy="154" r="5"/><circle className="chart-point" cx="108" cy="142" r="5"/><circle className="chart-point" cx="196" cy="151" r="5"/><circle className="chart-point" cx="284" cy="105" r="5"/><circle className="chart-point" cx="372" cy="118" r="5"/><circle className="chart-point" cx="460" cy="54" r="5"/><text x="16" y="214">7d ago</text><text x="101" y="214">6d</text><text x="190" y="214">4d</text><text x="278" y="214">2d</text><text x="430" y="214">Today</text></svg></div><div className="stat-row"><div className="stat"><strong className="movement up">{data.pulse.clipsUp}</strong><span>Clips up</span></div><div className="stat"><strong className="pink">{data.pulse.clipsDown}</strong><span>Clips down</span></div><div className="stat"><strong className="pink">{data.pulse.netMovement}</strong><span>Net movement</span></div></div></div><div className="card" style={{padding: 20, marginTop: 18}}><div className="eyebrow">Top mover</div><h2 className="serif">{data.topMover}</h2><div className="pink">{data.topMoverLabel}</div></div></aside></div></main>;
 }

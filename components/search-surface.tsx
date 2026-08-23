@@ -4,10 +4,10 @@ import {Clock, Grid2X2, Search as SearchIcon, Users, X} from "lucide-react";
 import {useEffect, useMemo, useRef, useState} from "react";
 import {useRouter} from "next/navigation";
 import {ClipCard, CreatorCard} from "@/components/cards";
-import {getSearchData} from "@/lib/hotrank";
+import type {SearchData} from "@/lib/hotrank/domain/types";
 
-export function SearchSurface() {
-  const {clips, creators} = getSearchData();
+export function SearchSurface({data}: {data: SearchData}) {
+  const {clips, creators} = data;
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
