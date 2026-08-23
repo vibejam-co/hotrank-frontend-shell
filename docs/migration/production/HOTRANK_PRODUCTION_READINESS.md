@@ -1,7 +1,7 @@
 # HOTRANK Production Readiness
 
-Date: 2026-08-23  
-Current code checkpoint: `94c4fe6`
+Date: 2026-08-23
+Current code checkpoint: `47bbb52`
 
 ## Product truth
 
@@ -25,8 +25,9 @@ not receive direct table DML.
 ## Readiness checks
 
 - Auth/Google/session: PASS from Phase 3C-LIVE-B.
-- Real profile identity boundary: PASS in code/tests; live authenticated owner
-  retest remains a preview/deployment verification step.
+- Real profile identity boundary: PASS in code/tests; authenticated owner retest
+  evidence is recorded in Phase 3C-LIVE-B, with final preview verification still
+  required after deployment access is established.
 - Creator identity boundary: PASS, server actor-bound claim RPC.
 - Submission boundary: PASS in code/tests; additive migration is prepared,
   not remotely applied.
@@ -53,7 +54,14 @@ perform a preview authenticated runtime retest.
 
 ## Verification
 
-`npm run typecheck`, `npm test`, and the focused Phase 3B/3C/Phase 4 boundary
-tests pass. Production build and representative route smoke pass when the
-explicit Supabase-mode built server is running locally. No remote mutations,
-deployment, DNS change, payment operation, or push occurred.
+`npm run typecheck`, `npm test`, `npm run lint`, and the focused Phase
+3B/3C/Phase 4 boundary tests pass. The eight Supabase public projections each
+returned HTTP 200 with the browser-safe key, and the explicit Supabase-mode
+read API returned successfully for home, rankings, creators, clip detail,
+activity, profile, saved, saved prompts, search, and submission resources.
+Production build and representative route smoke pass. Responsive visual smoke
+passes at desktop, tablet, and mobile widths with no horizontal overflow; the
+tablet hero/header overflow was repaired in `47bbb52`. Client bundle and
+browser-entrypoint privileged-secret scans are clean, and OAuth diagnostic
+noise is absent. No remote mutations, deployment, DNS change, payment
+operation, or push occurred.

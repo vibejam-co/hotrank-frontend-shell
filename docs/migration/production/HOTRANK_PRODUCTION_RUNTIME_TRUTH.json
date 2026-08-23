@@ -3,7 +3,7 @@
   "source": {
     "repository": "/Users/Ira/Desktop/hotrank-frontend-final",
     "branch": "main",
-    "checkpoint_under_test": "94c4fe6",
+    "checkpoint_under_test": "47bbb52",
     "canonical_frontend_tag": "hotrank-frontend-v1-lock",
     "canonical_frontend_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa"
   },
@@ -49,8 +49,23 @@
     "tests": "pass",
     "build": "pass",
     "route_smoke": "pass",
-    "visual_automation": "not_repeated_in_this_mission",
-    "canonical_ui_material_drift": "none_by_source_and_existing_qa_artifacts"
+    "lint": "pass_warning_only",
+    "public_projection_reads": {
+      "public_profiles": 200,
+      "public_creators": 200,
+      "public_clips": 200,
+      "public_rankings": 200,
+      "public_submissions": 200,
+      "public_follow_counts": 200,
+      "public_ignite_counts": 200,
+      "public_save_counts": 200
+    },
+    "adapter_read_resources": "pass_explicit_supabase_mode",
+    "visual_automation": "pass_desktop_tablet_mobile_and_requested_routes",
+    "responsive_overflow": "none",
+    "client_bundle_secret_scan": "clean",
+    "oauth_diagnostic_noise_scan": "clean",
+    "canonical_ui_material_drift": "none"
   },
   "remote_safety": {
     "database_migrations_applied": 0,
