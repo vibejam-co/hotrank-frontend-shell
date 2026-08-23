@@ -231,3 +231,10 @@
   .home-hero+.section>.rail>.card.ratio-card-9-16{width:112px}
   .home-hero+.section>.rail>.card.ratio-card-2-1{width:200px}
 }
+
+/* Keep the collapsed home hero inside its one-column grid at tablet widths. */
+@media(max-width:1100px){
+  .header{gap:16px}
+  .nav{gap:16px}
+  .hero-card .adaptive-media{aspect-ratio:auto}
+}
