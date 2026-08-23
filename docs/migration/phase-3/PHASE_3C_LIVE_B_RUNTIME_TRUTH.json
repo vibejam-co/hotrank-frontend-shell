@@ -1,6 +1,6 @@
 {
   "phase": "3C-LIVE-B",
-  "certification_date": "2026-08-21",
+  "certification_date": "2026-08-23",
   "scope": "authenticated existing-user Supabase session lifecycle",
   "project": {
     "name": "HOTRANK",
@@ -10,8 +10,8 @@
   },
   "source_control": {
     "branch": "main",
-    "starting_head": "7f62f3d128f266740ee31a2069c981d94a9b7056",
-    "final_head": "7f62f3d128f266740ee31a2069c981d94a9b7056",
+    "starting_head": "62a4a0c4649d05e809d631f2fc0e8b9e3a1240a0",
+    "final_head": "62a4a0c4649d05e809d631f2fc0e8b9e3a1240a0",
     "canonical_frontend_tag": "hotrank-frontend-v1-lock",
     "canonical_frontend_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa"
   },
@@ -65,6 +65,17 @@
     "route_smoke": "pass",
     "client_privileged_secret_scan": "pass",
     "canonical_ui_material_drift": "none"
+  },
+  "temporary_auth_diagnostics": {
+    "production_safe": true,
+    "filtered_cookie_names_only": true,
+    "sanitized_error_metadata_only": true,
+    "oauth_codes_logged": false,
+    "cookie_values_logged": false,
+    "tokens_logged": false,
+    "jwt_logged": false,
+    "keys_logged": false,
+    "passwords_logged": false
   },
   "known_follow_up": {
     "profile_fixture_demo_content": true,

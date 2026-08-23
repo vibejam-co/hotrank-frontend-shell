@@ -1,8 +1,11 @@
 # HOTRANK Phase 3C-LIVE-B Authenticated Session Certification
 
-Date: 2026-08-21  
+Date: 2026-08-23
 Project: HOTRANK (`csuejshnycgbfvtjbxoq`)  
 Scope: existing owner-authorized account session lifecycle only.
+
+This is the final authenticated runtime rerun from checkpoint
+`62a4a0c4649d05e809d631f2fc0e8b9e3a1240a0`.
 
 ## Verdict
 
@@ -52,7 +55,16 @@ session payload were recorded.
 - `npm test`: PASS.
 - `npm run build`: PASS with existing non-blocking image/autoprefixer warnings.
 - Representative route smoke: PASS.
+- Explicit Supabase-mode `/api/hotrank/read?resource=home`: HTTP 200.
 - Canonical header material drift: NONE.
+
+## Temporary Auth diagnostics
+
+The callback diagnostics are production-safe. They record only code/cookie
+presence booleans, filtered Supabase cookie names, callback execution count,
+exchange state, cookie mutation count, and sanitized error name/status/code/
+message. OAuth codes, cookie values, tokens, JWTs, keys, and passwords are not
+logged.
 
 ## Separate follow-up
 
