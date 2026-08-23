@@ -66,8 +66,9 @@ returned HTTP 200 with the browser-safe key, and the explicit Supabase-mode
 read API returned HTTP 200 for home, rankings, creators, clip detail,
 activity, profile, saved, saved prompts, search, and submission resources.
 The live Supabase-mode server returned HTTP 200 for `/`, `/rankings`,
-`/creators`, `/submit`, `/saved`, `/activity`, `/profile`, `/search`, and
-`/auth/sign-in`; unauthenticated session returned `{"user":null}` and
+`/creators`, a real remote creator profile, a real remote clip detail route,
+`/submit`, `/saved`, `/activity`, `/profile`, `/search`, and `/auth/sign-in`;
+unauthenticated session returned `{"user":null}` and
 no-session sign-out returned `{"ok":true}`. Invalid sign-in returned the
 generic controlled failure. Production build and representative route smoke
 pass. Responsive visual smoke passes at desktop, tablet, and mobile widths with

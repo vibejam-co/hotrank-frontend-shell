@@ -63,7 +63,7 @@
     },
     "adapter_read_resources": "pass_explicit_supabase_mode",
     "canonical_ui_remote_route_boundary": "pass_request_time_server_adapter_force_dynamic",
-    "live_route_smoke": {"/": 200, "/rankings": 200, "/creators": 200, "/submit": 200, "/saved": 200, "/activity": 200, "/profile": 200, "/search": 200, "/auth/sign-in": 200},
+    "live_route_smoke": {"/": 200, "/rankings": 200, "/creators": 200, "/creators/:slug": 200, "/clips/:id": 200, "/submit": 200, "/saved": 200, "/activity": 200, "/profile": 200, "/search": 200, "/auth/sign-in": 200},
     "live_auth_transport": {"session_without_session": 200, "sign_out_without_session": 200, "invalid_sign_in": 401, "callback_external_next_redirect": "local_root"},
     "moderation_runtime": "pass_deterministic_escalation_and_adjudication",
     "submission_gate": "closed_default_provider_unconfigured",
