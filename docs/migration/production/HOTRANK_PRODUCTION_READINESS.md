@@ -1,14 +1,17 @@
 # HOTRANK Production Readiness
 
 Date: 2026-08-23
-Current code checkpoint: `37966c9`
+Current code checkpoint: `e52316f`
 
 ## Product truth
 
 The canonical application is the frozen HOTRANK editorial shell for ranking AI
 clips. Authenticated Profile and Saved surfaces now read through the server
 read API, so authenticated identity is not replaced by the Lena Marlowe demo
-fixture. Empty remote account state is honest.
+fixture. Canonical server-rendered UI routes now read through the async
+Supabase adapter at request time and are force-dynamic, so build-time fixture
+output cannot freeze into an explicit Supabase deployment. Empty remote
+account and content state is honest.
 
 Creator identity has a server-bound claim boundary. Submission intake binds the
 authenticated actor, validates required metadata and rights, starts pending
@@ -60,12 +63,17 @@ authenticated runtime retest.
 `npm run typecheck`, `npm test`, `npm run lint`, and the focused Phase
 3B/3C/Phase 4 boundary and moderation runtime tests pass. The eight Supabase public projections each
 returned HTTP 200 with the browser-safe key, and the explicit Supabase-mode
-read API returned successfully for home, rankings, creators, clip detail,
+read API returned HTTP 200 for home, rankings, creators, clip detail,
 activity, profile, saved, saved prompts, search, and submission resources.
-Production build and representative route smoke pass. Responsive visual smoke
-passes at desktop, tablet, and mobile widths with no horizontal overflow; the
-tablet hero/header overflow was repaired in `47bbb52`. Client bundle and
-browser-entrypoint privileged-secret scans are clean, and OAuth diagnostic
-noise is absent. The submission API and UI are closed by default while the
-review provider is unconfigured. No remote mutations, deployment, DNS change,
-payment operation, or push occurred.
+The live Supabase-mode server returned HTTP 200 for `/`, `/rankings`,
+`/creators`, `/submit`, `/saved`, `/activity`, `/profile`, `/search`, and
+`/auth/sign-in`; unauthenticated session returned `{"user":null}` and
+no-session sign-out returned `{"ok":true}`. Invalid sign-in returned the
+generic controlled failure. Production build and representative route smoke
+pass. Responsive visual smoke passes at desktop, tablet, and mobile widths with
+no horizontal overflow; the tablet hero/header overflow was repaired in
+`47bbb52`. Client bundle and browser-entrypoint privileged-secret scans are
+clean, fixture contamination scan is clean, and OAuth diagnostic noise is
+absent. The submission API and UI are closed by default while the review
+provider is unconfigured. No remote mutations, deployment, DNS change, payment
+operation, or push occurred.

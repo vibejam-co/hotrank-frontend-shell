@@ -3,7 +3,7 @@
   "source": {
     "repository": "/Users/Ira/Desktop/hotrank-frontend-final",
     "branch": "main",
-    "checkpoint_under_test": "37966c9",
+    "checkpoint_under_test": "e52316f",
     "canonical_frontend_tag": "hotrank-frontend-v1-lock",
     "canonical_frontend_commit": "1e63e4a7e3b5603c5453c6a79ced27dff9ad33aa"
   },
@@ -62,11 +62,15 @@
       "public_save_counts": 200
     },
     "adapter_read_resources": "pass_explicit_supabase_mode",
+    "canonical_ui_remote_route_boundary": "pass_request_time_server_adapter_force_dynamic",
+    "live_route_smoke": {"/": 200, "/rankings": 200, "/creators": 200, "/submit": 200, "/saved": 200, "/activity": 200, "/profile": 200, "/search": 200, "/auth/sign-in": 200},
+    "live_auth_transport": {"session_without_session": 200, "sign_out_without_session": 200, "invalid_sign_in": 401, "callback_external_next_redirect": "local_root"},
     "moderation_runtime": "pass_deterministic_escalation_and_adjudication",
     "submission_gate": "closed_default_provider_unconfigured",
     "visual_automation": "pass_desktop_tablet_mobile_and_requested_routes",
     "responsive_overflow": "none",
     "client_bundle_secret_scan": "clean",
+    "fixture_contamination_scan": "clean",
     "oauth_diagnostic_noise_scan": "clean",
     "canonical_ui_material_drift": "none"
   },
