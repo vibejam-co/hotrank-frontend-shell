@@ -3,7 +3,7 @@ import {createMutationAdapter} from "@/lib/hotrank/adapters/supabase/mutations";
 import type {InteractionInput, ModerationInput, ModerationReviewInput, ProfileUpdateInput, RankingUpsertInput, SubmissionCreateInput, SubmissionUpdateInput} from "@/lib/hotrank/domain/mutations";
 import {createSupabaseServiceClient} from "@/lib/supabase/service";
 import {requireCurrentHotRankUser} from "@/lib/hotrank/server/auth";
-import {getHotRankBackendMode, HotRankConfigurationError} from "@/lib/hotrank/runtime";
+import {getHotRankBackendMode, HotRankConfigurationError, isHotRankSubmissionIntakeOpen} from "@/lib/hotrank/runtime";
 import {submissionIntake} from "@/lib/hotrank/moderation";
 
 export const dynamic = "force-dynamic";
@@ -20,6 +20,7 @@ export async function POST(request: Request) {
   if (!isObject(body?.input)) return NextResponse.json({error: "Mutation input is required"}, {status: 400});
   try {
     if (getHotRankBackendMode() !== "supabase") return NextResponse.json({error: "Supabase mutations require explicit Supabase mode"}, {status: 503});
+    if (action === "create-submission" && !isHotRankSubmissionIntakeOpen()) return NextResponse.json({error: "Submissions are temporarily closed while review automation is being activated", code: "SUBMISSIONS_CLOSED"}, {status: 503, headers: {"Cache-Control": "no-store"}});
     const user = await requireCurrentHotRankUser();
     const mutation = createMutationAdapter(createSupabaseServiceClient());
     const input = body.input;

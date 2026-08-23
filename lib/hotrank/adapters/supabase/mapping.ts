@@ -187,11 +187,14 @@ export function mapProfileData(userId: string | null, snapshot: MappedSnapshot, 
   const profile = profileRow ? mapProfile(profileRow) : undefined;
   const fallbackName = text(identity?.displayName, text(identity?.email?.split("@")[0], "HOTRANK member"));
   const fallbackHandle = text(identity?.handle);
+  const links = Array.isArray(profileRow?.links) ? profileRow.links.filter((link): link is string => typeof link === "string" && Boolean(link.trim())).map((link) => link.trim()) : [];
   return {
     id: userId ?? "anonymous",
     name: profile?.name ?? fallbackName,
     handle: profile?.handle ?? (fallbackHandle ? `@${fallbackHandle.replace(/^@/, "")}` : ""),
     avatar: profile?.avatar ?? emptyAvatar,
+    bio: profile?.bio,
+    links,
     memberSinceLabel: memberSinceLabel(profileRow?.created_at),
     stats: [],
     recentlySaved: [],

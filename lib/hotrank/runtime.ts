@@ -77,3 +77,7 @@ export function getHotRankTimeoutMs(): number {
   }
   return value;
 }
+
+export function isHotRankSubmissionIntakeOpen(): boolean {
+  return process.env.HOTRANK_SUBMISSIONS_OPEN?.trim().toLowerCase() === "true";
+}

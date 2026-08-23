@@ -108,6 +108,8 @@ export interface UserProfile {
   name: string;
   handle: string;
   avatar: string;
+  bio?: string;
+  links?: string[];
   memberSinceLabel: string;
   stats: Array<{ label: string; value: string }>;
   recentlySaved: Clip[];
