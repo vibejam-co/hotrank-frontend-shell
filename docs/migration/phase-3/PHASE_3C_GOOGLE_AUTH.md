@@ -84,6 +84,11 @@ That could complete OAuth while leaving the next `/api/auth/session` request
 unauthenticated. The surgical repair binds Supabase `setAll` directly to the
 redirect response and treats an exchange error as a controlled failure.
 
+The callback now emits only safe structured server diagnostics during owner
+retest: code/cookie presence booleans, exchange success, cookie-write attempted,
+and sanitized error name/status/code/message. It never logs OAuth codes, cookie
+values, tokens, JWTs, passwords, or raw session data.
+
 ## Verification
 
 - `npm run typecheck` — PASS.
@@ -92,12 +97,26 @@ redirect response and treats an exchange error as a controlled failure.
 - `npm run build` — PASS with existing non-blocking image/autoprefixer warnings.
 - Route smoke — PASS: `/`, `/rankings`, `/creators`, `/submit`, `/saved`,
   `/activity`, `/profile`, `/search`, and `/auth/sign-in` returned HTTP 200.
+- Explicit Supabase read API — PASS: representative `home`, `rankings`,
+  `creators`, `activity`, `profile`, `saved`, `search`, and `submission` reads
+  returned data envelopes without fixture-mode fallback.
+- Safe public projections — PASS: `public_profiles`, `public_creators`,
+  `public_clips`, `public_rankings`, `public_submissions`,
+  `public_follow_counts`, `public_ignite_counts`, and `public_save_counts`
+  each returned HTTP 200 from the exact HOTRANK project using the
+  browser-safe key.
+- Diagnostic invalid-code probe — controlled `AuthPKCECodeVerifierMissingError`
+  with `pkce_code_verifier_not_found`; this probe intentionally had no
+  browser-created verifier and is not evidence of an owner OAuth-flow result.
 - Callback probe — PASS: `next=https://evil.example` normalized to local `/`.
 - Callback cookie-boundary contract — PASS: exchange errors are handled and
   the response carrying cookie mutations is returned.
 - Visual QA — PASS by browser DOM/layout inspection at desktop and 390px mobile;
   browser viewport was restored afterward.
 - Owner credentials were not entered and LIVE-B was not started.
+- Owner clean Google OAuth retest remains required before declaring the
+  exchange, verifier receipt, cookie write, and session persistence gates
+  passed.
 
 ## Git checkpoint
 
