@@ -243,3 +243,32 @@
   .nav{gap:16px}
   .hero-card .adaptive-media{aspect-ratio:auto}
 }
+
+/* Surgical interaction layer: preserve the canonical geometry while exposing keyboard and touch behavior. */
+.hero-card,[data-clip-card]{cursor:pointer}
+.hero-card:focus-visible,[data-clip-card]:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.rank-item{appearance:none;background:transparent;color:inherit;font:inherit;text-align:left;width:100%;cursor:pointer;transition:background-color .16s ease,border-color .16s ease}
+.rank-item:hover,.rank-item:focus-visible,.rank-item.active{background:var(--soft)}
+.rank-item:focus-visible{outline:2px solid var(--pink);outline-offset:-2px}
+.media-sound-control{position:absolute;top:10px;right:10px;z-index:4;display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid rgba(255,255,255,.48);border-radius:50%;background:rgba(0,0,0,.58);color:var(--text);cursor:pointer}
+.media-sound-control:hover,.media-sound-control:focus-visible{background:var(--pink);border-color:var(--pink);outline:2px solid var(--pink);outline-offset:2px}
+.quick-view-backdrop{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:28px;background:rgba(0,0,0,.72)}
+.quick-view{width:min(860px,100%);max-height:min(850px,calc(100vh - 56px));overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:9px;box-shadow:0 24px 70px rgba(0,0,0,.55);padding:18px}
+.quick-view-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.quick-view-close{width:36px;height:36px}
+.quick-view-media .adaptive-media{width:100%;max-height:54vh}
+.quick-view-info{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;padding-top:18px}
+.quick-view-info h2{margin:0 0 4px;font-size:34px;line-height:1.05}
+.quick-view-stats{display:flex;gap:16px;color:var(--pink);font-family:Georgia,serif;font-size:18px;white-space:nowrap}
+.quick-view-description{max-width:700px;color:var(--secondary);margin:14px 0 0}
+.quick-view-actions{display:flex;gap:10px;margin-top:18px}
+@media(max-width:680px){
+  .quick-view-backdrop{padding:0;place-items:stretch}
+  .quick-view{width:100%;max-height:100%;min-height:100%;border:0;border-radius:0;padding:16px}
+  .quick-view-media .adaptive-media{max-height:none}
+  .quick-view-info{display:block}
+  .quick-view-info h2{font-size:30px}
+  .quick-view-stats{margin-top:12px;gap:14px}
+  .quick-view-actions{position:sticky;bottom:0;padding-top:14px;background:linear-gradient(var(--surface),var(--surface));}
+  .quick-view-actions .btn{flex:1;min-height:44px}
+}

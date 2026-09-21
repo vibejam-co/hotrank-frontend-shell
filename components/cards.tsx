@@ -1,15 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import {useState} from "react";
+import {useState, type KeyboardEvent, type MouseEvent} from "react";
 import {useRouter} from "next/navigation";
 import {Bookmark, Flame, Play} from "lucide-react";
 import {AdaptiveMedia} from "@/components/adaptive-media";
 import {CopyPrompt} from "@/components/copy-prompt";
 import type {Clip, Creator, Prompt} from "@/lib/hotrank/domain/types";
 
-export function ClipCard({item, wide = false, saved = false, overlay = false}: {item: Clip; wide?: boolean; saved?: boolean; overlay?: boolean}) {
-  return <Link href={`/clips/${item.slug}`} className={`card ${wide ? "wide-card" : ""} ${saved ? "saved-card" : ""} ratio-card-${item.ratio.replace(/[:.]/g, "-")}`}><AdaptiveMedia poster={item.poster} video={item.video} alt={`${item.title} by ${item.creator.name}`} ratio={item.ratio} href={undefined} label={<><div className="media-gradient"/><span className="play" aria-hidden="true"><Play size={16} fill="currentColor"/></span>{overlay && <div className="media-caption"><h3 className="serif">{item.title}</h3><div className="meta">{item.creator.name} · <span className="heat"><Flame size={12}/> {item.heat}</span> <span className={`movement ${item.movement.direction === "down" ? "down" : "up"}`}>{item.movement.label}</span></div></div>}</>}/>{!saved && !overlay && <div className="clip-card-body"><div><h3 className="serif">{item.title}</h3><div className="meta">{item.creator.name}</div></div><div className="clip-card-metric"><span className="heat"><Flame size={12}/> {item.heat}</span><span className={`movement ${item.movement.direction === "down" ? "down" : "up"}`}>{item.movement.label}</span></div></div>}{saved && <div className="saved-card-body"><div><h3 className="serif">{item.title}</h3><div className="meta">by {item.creator.name}</div></div><div className="saved-card-stat"><strong className="pink">#{item.rankLabel || "—"}</strong><span className="heat"><Flame size={12}/> {item.heat}</span><span className="icon-btn" aria-hidden="true"><Bookmark size={15} className="pink"/></span></div></div>}</Link>;
+export function ClipCard({item, wide = false, saved = false, overlay = false, interaction = "link", onOpen}: {item: Clip; wide?: boolean; saved?: boolean; overlay?: boolean; interaction?: "link" | "modal"; onOpen?: (clip: Clip, trigger: HTMLElement) => void}) {
+  const router = useRouter();
+  const destination = `/clips/${item.slug}`;
+  const activate = (trigger: HTMLElement) => interaction === "modal" ? onOpen?.(item, trigger) : router.push(destination);
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
+    if ((event.target as HTMLElement).closest("button, a")) return;
+    activate(event.currentTarget);
+  };
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    activate(event.currentTarget);
+  };
+  return <article role="group" tabIndex={0} aria-label={`${item.title} by ${item.creator.name}`} data-clip-card data-interaction={interaction} onClick={handleClick} onKeyDown={handleKeyDown} className={`card ${wide ? "wide-card" : ""} ${saved ? "saved-card" : ""} ratio-card-${item.ratio.replace(/[:.]/g, "-")}`}><AdaptiveMedia poster={item.poster} video={item.video} alt={`${item.title} by ${item.creator.name}`} ratio={item.ratio} href={undefined} label={<><div className="media-gradient"/><span className="play" aria-hidden="true"><Play size={16} fill="currentColor"/></span>{overlay && <div className="media-caption"><h3 className="serif">{item.title}</h3><div className="meta">{item.creator.name} · <span className="heat"><Flame size={12}/> {item.heat}</span> <span className={`movement ${item.movement.direction === "down" ? "down" : "up"}`}>{item.movement.label}</span></div></div>}</>}/>{!saved && !overlay && <div className="clip-card-body"><div><h3 className="serif">{item.title}</h3><div className="meta">{item.creator.name}</div></div><div className="clip-card-metric"><span className="heat"><Flame size={12}/> {item.heat}</span><span className={`movement ${item.movement.direction === "down" ? "down" : "up"}`}>{item.movement.label}</span></div></div>}{saved && <div className="saved-card-body"><div><h3 className="serif">{item.title}</h3><div className="meta">by {item.creator.name}</div></div><div className="saved-card-stat"><strong className="pink">#{item.rankLabel || "—"}</strong><span className="heat"><Flame size={12}/> {item.heat}</span><span className="icon-btn" aria-hidden="true"><Bookmark size={15} className="pink"/></span></div></div>}</article>;
 }
 
 export function CreatorCard({creator}: {creator: Creator}) {

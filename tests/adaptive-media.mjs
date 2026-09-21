@@ -24,9 +24,15 @@ assert.match(cards, /aria-hidden="true"/);
 const media = read("components/adaptive-media.tsx");
 assert.match(media, /<video/);
 assert.match(media, /<iframe/);
-assert.match(media, /autoplay=1&mute=1&playsinline=1&controls=0&rel=0/);
+assert.match(media, /autoplay=1&mute=\$\{soundPreference === "on" \? 0 : 1\}&playsinline=1&controls=0&rel=0/);
 assert.match(media, /controls=1&rel=0/);
 assert.match(media, /onError=\{handleMediaFailure\}/);
 assert.match(media, /mode === "detail"/);
+assert.match(media, /hotrank_preview_sound/);
+assert.match(media, /postMessage\(JSON\.stringify\(\{event: "command"/);
+assert.match(media, /prefers-reduced-motion/);
+assert.match(media, /IntersectionObserver/);
+assert.match(media, /activeStop\?\.\(\)/);
+assert.match(media, /media-sound-control/);
 
 console.log("HOTRANK adaptive media regression tests passed");
